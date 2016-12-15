@@ -1,4 +1,4 @@
-package org.iii.web.student;
+package org.iii.web.culture;
 
 import java.util.List;
 
@@ -21,6 +21,13 @@ public class StudentService {
 			return alluserinfo;
 		
 	}
+	
+	public List getactiveinfo() {
+
+		List alluserinfo = studentRepository.selectactive();
+		return alluserinfo;
+	
+}
 	
 	public int insertUser(String username, String password, String email, String enabled) {
 

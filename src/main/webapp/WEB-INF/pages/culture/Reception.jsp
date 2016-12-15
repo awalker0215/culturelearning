@@ -1,25 +1,25 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Light Theme</title>
-<link href="/resources/css/simpleGridTemplate.css" rel="stylesheet" type="text/css">
+<title>細部說明</title>
+<link href="/resources/css/reception.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <!-- Main Container -->
-<P align="right">Login</P>
+<p align="right">edit</p>
 <div class="container"> 
   <!-- Header -->
-  <header class="header">
-    <h4 class="logo">Title</h4>
+  <header class="primary_header">
+    <h1 class="title">細部說明</h1>
   </header>
   <!-- Hero Section -->
   <section class="intro">
     <div class="column">
       <!--h3>JOHN DOE</h3>-->
-      <img src="/resources/pic/profile.png" alt="" class="profile"> </div>
+      <img src="images/profile.png" alt="" class="profile"> </div>
     <div class="column">
       <table width="95%" border="1" bordercolor="#66ccff" bgcolor="#ffffb3">
         <tbody>
@@ -71,11 +71,9 @@
       <h4>TITLE</h4>
       <p class="tag">HTML, CSS, JS, WordPress</p>
 </div>
-  </div>
-  <!-- Footer Section -->
-  
+  </div> 
   <!-- Copyrights Section -->
-  <div class="copyright">&copy;2015 - <strong>GRID</strong></div>
+  <div class="copyright">&copy;2016 - cultion</div>
 </div>
 <!-- Main Container Ends -->
 </body>

@@ -1,4 +1,4 @@
-package org.iii.web.student;
+package org.iii.web.culture;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,6 +37,15 @@ public class StudentRepository {
 	@Inject	
 	public void init(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
+	}
+	
+	
+	public List selectactive() {
+		String sql = "SELECT * FROM student_score";
+		List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql);
+			
+		return list;
+
 	}
 	
 	public List selectallUsers() {
