@@ -1,0 +1,100 @@
+@charset "UTF-8";
+h1{
+	color: white;
+}
+h3{
+	text-align: left;
+}
+body{
+	margin-top: 0px;
+	margin-right: 23%;
+	margin-bottom: 0px;
+	margin-left: 23%;
+
+	align-content: center;
+	background-color:#CACACA;
+}      
+.header{
+	display:block; 
+	clear:both; 
+	padding:5px; 
+	text-align:center; 
+	background:#747474;
+}
+.aside{
+	display:block; 
+	float:left; 
+	width:35%; 
+	height:auto; 
+	background:#ECECEc; 
+	padding:0px;
+
+}
+
+#div1{
+	background-color:#63A8E9;
+	width:20%;
+	line-height:30px;
+	padding:20px;
+	margin: 10px;
+	float:left;
+}
+#div2{
+	background-color:#70D564;
+	width:20%;
+	line-height:30px;
+	padding:20px;
+	margin: 10px;
+	float:left;
+}
+#div3{
+	background-color:#D76567;
+	width:20%;
+	line-height:30px;
+	padding:20px;
+	margin: 10px;
+	float:left;
+}
+
+.section{
+	display:block;  
+	float:right; 
+	width:65%; 
+	height:auto; 
+	/*background:#ECECEC; */
+	padding:0px
+}
+.row{
+	width: 100%;
+}
+.right_div{
+	margin-top: 10%;
+	padding-left: 3%;
+	padding-right: 3%;
+}
+.map_div{
+	padding: 0.5em; 
+	font-family: 新細明體; 
+	font-size: 1.17em; 
+	line-height: 1.5em; 
+	letter-spacing: 0.1em; 
+	display: block; 
+	text-align: justify; 
+	display: none;
+}
+.textarea{
+	width: 80%; 
+	height: 125px; 
+	font-size: 14px; 
+	line-height: 18px; 
+	border: 1px solid #dddddd; 
+	padding: 10px;
+}
+
+.footer{
+	display: block; 
+	width:auto; 
+	height: auto; 
+
+	padding: 5px;
+}

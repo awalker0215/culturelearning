@@ -13,6 +13,7 @@
 </head>
 <body>
 <p align="right"><a href="culture/login">login</a></p>
+<p align="right"><a href="culture/refirsted">register</a></p>
 <div class="container">
   <header>
     <div class="primary_header">

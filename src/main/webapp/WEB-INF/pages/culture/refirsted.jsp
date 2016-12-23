@@ -1,11 +1,10 @@
-﻿<!doctype html>
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="true"%>
+<%@ page language="java" import="java.sql.*" %>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Culture_refirsted</title>
-<link href="/resources/css/multiColumnTemplate.css" rel="stylesheet" type="text/css">
+<link href="recource/css/multiColumnTemplate.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="container">
@@ -14,30 +13,40 @@
       <h1 class="title"> 註冊</h1>
     </div>
 </header>
-  <section>    
-    
-    
-    <article class="left_article">
-<br>
-            <fieldset>
-				
-                <legend> 【基本資料】 </legend>
-            
-                <br style="text-indent: -2em; margin-left: 4em;">
-                    帳號  <input id=p_acc type="text"> </br>
-                    密碼  <input id=p_passwd type="text"> </p>  
-                姓名  <input id=p_name type="text"> <br>
-                暱稱	<input id=p_nickname type="text"> </p> 
-                性別：
-              <input type="radio" name="gender" value="gen1"> 男 
-                    <input type="radio" name="gender" value="gen2"> 女 </p>    
-                出生年月日：
-                    <input id=p_age type="date" value="YYYY/MM/DD"></p>
-                    <input id="btn_refirsted" class="btn_200_40 login-btn" type="button" value="註冊">
-             
-
-
-</article>
+  <section class="left_article">   
+		<form name='registeredForm' 
+					action="insert" method="POST">
+	
+			<table>
+				<tr>
+					<td>帳號:</td>
+					<td><input type='text' name='username'></td>
+				</tr>
+				<tr>
+					<td>密碼:</td>
+					<td><input type='password' name='password' /></td>
+				</tr>
+				<tr>
+					<td>信箱:</td>
+					<td><input type='email' name='email' /></td>
+				</tr>
+				<tr>
+					<td>年齡:</td>
+					<td><input type='text' name='age'></td>
+				</tr>
+        <tr>
+					<td>性別:</td>
+					<td>
+            <input type="radio" name="p_sex" value="M" /> 男 
+            <input type="radio" name="p_sex" value="F" /> 女
+          </td>
+				</tr>
+				<tr>
+					<td colspan='2'><input id="btn_refirsted" class="btn_200_40 login-btn" type="submit" value="註冊" /></td>
+				</tr>
+			</table>
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+		</form>   
 </section>
 <footer class="secondary_header footer">
     <div class="copyright">&copy;2016 - <strong>culture</strong></div>

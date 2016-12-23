@@ -41,5 +41,11 @@ public class StudentService {
 		studentRepository.deleteUser(username);
 	
 	}
+	public int insertpro(String username, String password,String sex ,String email,int age,String enabled) {
+
+		int updateCount = studentRepository.insertpro( username,password,sex,email,age,enabled);
+		return updateCount;
+	
+	}
 	
 }

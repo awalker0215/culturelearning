@@ -19,7 +19,7 @@
   <section class="intro">
     <div class="column">
       <!--h3>JOHN DOE</h3>-->
-      <img src="images/profile.png" alt="" class="profile"> </div>
+      <img src="/resources/pic/profile.png" alt="" class="profile"> </div>
     <div class="column">
       <table width="95%" border="1" bordercolor="#66ccff" bgcolor="#ffffb3">
         <tbody>

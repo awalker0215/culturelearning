@@ -55,30 +55,65 @@ public class StudentController {
 
 		ModelAndView model = new ModelAndView();
 		
-		List getactiveinfo = studentService.getactiveinfo();
-		model.addObject("getactiveinfo", getactiveinfo);
+		/*List getactiveinfo = studentService.getactiveinfo();
+		model.addObject("getactiveinfo", getactiveinfo);*/
 	           
 		model.setViewName("culture/Reception");
 		return model;
 
 	}
 	
+	@RequestMapping(value = { "culture/newinfo" }, method = RequestMethod.GET)
+	public ModelAndView addPage() {
 
-	@RequestMapping(value = "culture/insert", method = RequestMethod.POST)
+		ModelAndView model = new ModelAndView();
+		
+		/*List getactiveinfo = studentService.getactiveinfo();
+		model.addObject("getactiveinfo", getactiveinfo);*/
+	           
+		model.setViewName("culture/addPage");
+		return model;
+
+	}
+	
+	@RequestMapping(value = "culture/refirsted", method = RequestMethod.GET)
 	public ModelAndView commonPage(HttpServletRequest request,
 			HttpServletResponse response) {
 		
 		ModelAndView model = new ModelAndView();
-		
-		List alluserinfo = studentService.getactiveinfo();
-		model.addObject("alluserinfo", alluserinfo);
 
-		model.setViewName("student/insert");
+		model.setViewName("culture/refirsted");
 		
 		return model;
 
 	}
 	
+	
+	
+
+	@RequestMapping(value = "culture/insert", method = RequestMethod.POST)
+	public ModelAndView insertPage(HttpServletRequest request,
+			HttpServletResponse response) {
+		
+		
+		ModelAndView model = new ModelAndView();
+		
+		String password = (String)request.getParameter("password");
+		String username = (String)request.getParameter("username");
+		String sex = (String)request.getParameter("p_sex");
+		String email = (String)request.getParameter("email");
+		int age = (int)Integer.parseInt(request.getParameter("age"));
+		studentService.insertpro(username,password, sex, email, age, "1");
+		System.out.println("insert a user");
+		
+		/*List alluserinfo = studentService.getactiveinfo();
+		model.addObject("alluserinfo", alluserinfo);*/
+
+		model.setViewName("../../index");
+		
+		return model;
+
+	}
 	
 	
 

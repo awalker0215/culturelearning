@@ -45,6 +45,7 @@ public class StudentRepository {
 		List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql);
 			
 		return list;
+		
 
 	}
 	
@@ -89,6 +90,15 @@ public class StudentRepository {
 	public void deleteUser(String username){
 		String sql = "DELETE FROM users WHERE username =?" ; 
 		this.jdbcTemplate.update(sql,username);	
+
+	}
+	//=======================
+	public int insertpro(String username,String password,String sex,String email,int age, String enabled)
+	{ 
+		String sql = "INSERT INTO profile(p_sex,p_age,c_Id,username) VALUE(?,?,?,?) ";
+		int updateCount = jdbcTemplate.update(sql,
+				new Object[] { sex, age,1,username});
+		return updateCount;
 
 	}
 	
