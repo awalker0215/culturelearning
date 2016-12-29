@@ -1,8 +1,10 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page session="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page session="true" language="java" contentType="text/html; charset=UTF-8"  
+    pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>Login Page</title>
+<meta charset="utf-8">
+<title>登入頁面</title>
 <link href="/resources/css/multiColumnTemplate.css" rel="stylesheet" type="text/css">
 <!--style>
 .error {
@@ -43,7 +45,7 @@
 	<div id="login-box">
 
 		<center>
-    		<h3>test</h3>
+    		<h3></h3>
 	   </center>  
 
 		<c:if test="${not empty error}">
@@ -59,16 +61,16 @@
 
 			<table>
 				<tr>
-					<td>User:</td>
+					<td>帳號:</td>
 					<td><input type='text' name='username'></td>
 				</tr>
 				<tr>
-					<td>Password:</td>
+					<td>密碼:</td>
 					<td><input type='password' name='password' /></td>
 				</tr>
 				<tr>
 					<td colspan='2'><input name="submit" type="submit"
-						value="submit" /></td>
+						value="登入" /></td>
 				</tr>
 			</table>
 			</article>
@@ -80,7 +82,7 @@
 		<aside class="right_article"><img src="/resources/pic/placeholder.jpg" alt="" width="400" height="200" class="placeholder"/> </aside>
 		<footer class="secondary_header footer">
 		</saction>
-			<div class="copyright">&copy;2016 - <strong>culture</strong></div>
+			<div class="copyright">&copy;2016 - <strong>文化學習</strong></div>
 		</footer>
 	</div>
 
