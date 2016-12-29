@@ -95,9 +95,20 @@ public class StudentRepository {
 	//=======================
 	public int insertpro(String username,String password,String sex,String email,int age, String enabled)
 	{ 
+		String sql0 = "SELECT COUNT(c_Id) FROM profile ";
+		int count;
+		int cid=0;
+		count =this.jdbcTemplate.queryForObject(sql0,Integer.class);
+		System.out.println(count);
+		if(count==0){
+			cid =1;
+		}
+		else{
+			cid =count+1;
+		}
 		String sql = "INSERT INTO profile(p_sex,p_age,c_Id,username) VALUE(?,?,?,?) ";
 		int updateCount = jdbcTemplate.update(sql,
-				new Object[] { sex, age,1,username});
+				new Object[] { sex, age,cid,username});
 		return updateCount;
 
 	}
