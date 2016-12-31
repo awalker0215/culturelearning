@@ -112,10 +112,20 @@ public class StudentController {
 		model.setViewName("../../index");
 		
 		return model;
+		
+		}
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	public ModelAndView selectmap() {
+
+		ModelAndView model = new ModelAndView();
+
+		List allmapinfo = studentService.getallmaprinfo();
+		model.addObject("allmapinfo", allmapinfo);
+	           
+		model.setViewName("index");
+		return model;
 
 	}
-	
-	
 
 
 }

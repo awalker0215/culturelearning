@@ -47,5 +47,13 @@ public class StudentService {
 		return updateCount;
 	
 	}
+
+	public List getallmaprinfo() {
+		// TODO Auto-generated method stub
+		List allmapinfo = studentRepository.selectallmaps();
+		return allmapinfo;
+	}
+
+
 	
 }
