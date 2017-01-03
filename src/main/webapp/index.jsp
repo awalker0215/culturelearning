@@ -44,7 +44,14 @@
 				center: {lat: 23.570829, lng: 119.5811566},
 				zoom: 16
 			  });
-			
+			    <c:forEach items="${allmapinfo}" var="p">
+					sign[index] = new google.maps.Marker({
+					    position: {lat:"${p.l_x-axis}", lng:"${p.l_y-axis}"};
+					    map: map,
+					    title: "${p.l_name}"
+					  });
+			    </c:forEach>
+
 
 			}
 		</script>

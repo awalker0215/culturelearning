@@ -109,6 +109,12 @@ public class StudentRepository {
 		String sql = "INSERT INTO profile(p_sex,p_age,c_Id,username) VALUE(?,?,?,?) ";
 		int updateCount = jdbcTemplate.update(sql,
 				new Object[] { sex, age,cid,username});
+		String sql2 = "INSERT INTO users(username,password,email,enabled) VALUE(?,md5(?),?,?) ";
+		int updateCount2 = jdbcTemplate.update(sql2,
+				new Object[] { username, password,email,1});
+		String sql3 = "INSERT INTO user_roles(user_role_id,username,role) VALUE(?,?,?) ";
+		int updateCount3 = jdbcTemplate.update(sql3,
+				new Object[] { cid, username,"ROLE_USER"});
 		return updateCount;
 
 	}
