@@ -1,62 +1,79 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  
-    pageEncoding="UTF-8"%>  
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="resources/css/reception1229.css" rel="stylesheet" type="text/css">
+<link href="resources/css/reception1229.css" rel="stylesheet"
+	type="text/css">
 <title>GoogleMap</title>
-<style type="text/css"> </style>
+<style type="text/css">
+</style>
 </head>
 <body>
-<a align="right" href="culture/login">login</a><br>
-<a align="right" href="culture/refirsted">register</a>
-<div class="container">
-			<div class="primary_header">
-			  <h1 class="title">首頁</h1>
-			</div>
+	<a align="right" href="culture/login">login</a>
+	<br>
+	<a align="right" href="culture/refirsted">register</a>
+	<div class="container">
+		<div class="primary_header">
+			<h1 class="title">首頁</h1>
 		</div>
-		<div id="map"></div>
-		
-		<div id="mwt_mwt_slider_scroll">
+	</div>
+	<div id="map"></div>
+
+	<div id="mwt_mwt_slider_scroll">
 		<div id="mwt_fb_tab">
-			<span>分</span>
-			<span>類</span>	
+			<span>分</span> <span>類</span>
 		</div>
-			<div id="mwt_slider_content">
-			  <ul>
-				  <span class="sp_span">生物</span>
-				  <span class="sp_span">生物</span>
-			 	  <span class="sp_span">生物</span><br>
-			  </ul>
-			    <div class="copyright">&copy;2016 - cultion</div>
-			</div>
+		<div id="mwt_slider_content">
+			<ul>
+				<span class="sp_span">生物</span>
+				<span class="sp_span">生物</span>
+				<span class="sp_span">生物</span>
+				<br>
+			</ul>
+			<div class="copyright">&copy;2016 - cultion</div>
 		</div>
-<script type="text/javascript">
+	</div>
+	<script src="https://apis.google.com/js/api.js"></script>
+	<script type="text/javascript">
 				//地圖
+				var markerLat, markerLong;
+				markerLat = [
+    				<c:forEach var="s" items="${allmapinfo}">
+        				<c:out value="${s.l_x-axis}"/>,
+   					 </c:forEach>
+					];
+				markerLong = [
+					  <c:forEach var="s" items="${allmapinfo}">
+					      <c:out value="${s.l_y-axis}"/>,
+					  </c:forEach>
+					];
 			var map;
-			var sign = [];
-			var index = 0;
 			function initMap() {
 			  map = new google.maps.Map(document.getElementById('map'), {
 				center: {lat: 23.570829, lng: 119.5811566},
 				zoom: 16
 			  });
-			    <c:forEach items="${allmapinfo}" var="p">
-					sign[index] = new google.maps.Marker({
-					    position: {lat:"${p.l_x-axis}", lng:"${p.l_y-axis}"};
-					    map: map,
-					    title: "${p.l_name}"
-					  });
-			    </c:forEach>
-
+	        var marker, i;
+	            for (i = 0; i < markerLat.length; i++) {
+	                marker = new google.maps.Marker({
+	                    position: new google.maps.LatLng(markerLat[i], markerLong[i]),
+	                    map: map
+	                });
+	            }
+			 /* var i = new google.maps.Marker({
+				    position:new google.maps.LatLng(23.570829,119.5811566),
+				    map: map,
+				    title:'test'
+				});*/
 
 			}
 		</script>
 	<script async defer
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0YHjxhTqUPSIQtCRRLPsKmYZ8NUmiX00&callback=initMap">
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0YHjxhTqUPSIQtCRRLPsKmYZ8NUmiX00&callback=initMap">
 		</script>
 
 	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -78,5 +95,5 @@
 				});	
 			});
 		</script>
-  </body>
+</body>
 </html>
