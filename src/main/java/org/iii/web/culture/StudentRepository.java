@@ -120,6 +120,7 @@ public class StudentRepository {
 
 			String sql = "SELECT * FROM laction";
 			List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql);
+			
 			return list;
 	}
 	

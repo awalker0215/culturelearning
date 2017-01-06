@@ -119,10 +119,11 @@ public class StudentController {
 
 		ModelAndView model = new ModelAndView();
 
-		List allmapinfo = studentService.getallmaprinfo();
+		List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
 		model.addObject("allmapinfo", allmapinfo);
-	           
-		model.setViewName("index");
+		for(Map<String, Object> i:allmapinfo)
+			System.out.println(i);
+		model.setViewName("../../index");
 		return model;
 
 	}

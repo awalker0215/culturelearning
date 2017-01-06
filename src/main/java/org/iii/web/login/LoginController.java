@@ -28,7 +28,7 @@ public class LoginController {
 	@Resource(name = "LoginService")
 	LoginService loginService;
 
-	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+	@RequestMapping(value = {"/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView defaultPage() {
 
 		

@@ -1,6 +1,7 @@
 package org.iii.web.culture;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -50,7 +51,7 @@ public class StudentService {
 
 	public List getallmaprinfo() {
 		// TODO Auto-generated method stub
-		List allmapinfo = studentRepository.selectallmaps();
+		List<Map<String, Object>> allmapinfo = studentRepository.selectallmaps();
 		return allmapinfo;
 	}
 
