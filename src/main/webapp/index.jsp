@@ -9,13 +9,15 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="/resources/css/reception1229.css" rel="stylesheet" type="text/css">
+<link href="/resources/css/reception.css" rel="stylesheet" type="text/css">
 <title>GoogleMap</title>
 <style type="text/css"> </style>
 </head>
 <body>
-<a align="right" href="culture/login">login</a><br>
-<a align="right" href="culture/refirsted">register</a>
+<div class="top_div">
+	<a align="right" href="culture/login">【登入/註冊】</a>
+</div>
+
 <div class="container">
 			<div class="primary_header">
 			  <h1 class="title">首頁</h1>
@@ -44,11 +46,13 @@
 			var index = 0;
 			function initMap() {
 			  map = new google.maps.Map(document.getElementById('map'), {
-				center: {lat: 23.570829, lng: 119.5811566},
+				center: {lat: 23.574979, lng: 119.576194},
 				zoom: 16
 			  });
 			  
 			  var markers = [];
+			  var infos = [];
+			  var info;
 			<c:forEach items="${allmapinfo}" var="p">
 
 			  latLng = new google.maps.LatLng("${p.l_xaxis}", "${p.l_yaxis}");
@@ -56,7 +60,14 @@
 			            position: latLng,
 			            map:map
 			    });
-			  markers.push(marker);					
+			  info = new google.maps.InfoWindow({
+				    content: "${p.l_name}"
+			 });
+			  
+			  
+			  infos.push(info);
+			  markers.push(marker);	
+			  
 			</c:forEach>
 			}
 		</script>

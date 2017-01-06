@@ -6,8 +6,8 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="resources/css/admin_2.css" rel="stylesheet" type="text/css">
-        <title>使用者編輯</title>
+		<link href="/resources/css/admin_2.css" rel="stylesheet" type="text/css">
+        <title>使用者編輄1�7/title>
         
     </head>
     
@@ -17,7 +17,7 @@
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js">
 $(function (){
 	/**
-	 * 格式化
+	 * 格式匄1�7
 	 * @param   num 要轉換的數字
 	 * @param   pos 指定小數第幾位做四捨五入
 	 */
@@ -29,15 +29,15 @@ $(function (){
  
  
 	/**
-	 * 預覽圖
-	 * @param   input 輸入 input[type=file] 的 this
+	 * 預覽圄1�7
+	 * @param   input 輸入 input[type=file] 的1�7 this
 	 */
 	function preview(input) {
 
 		// 若有選取檔案
 		if (input.files && input.files[0]) {
 
-			// 建立一個物件，使用 Web APIs 的檔案讀取器(FileReader 物件) 來讀取使用者選取電腦中的檔案
+			// 建立丄1�7個物件，使用 Web APIs 的檔案讀取器(FileReader 物件) 來讀取使用�1�7�選取電腦中的檔桄1�7
 			var reader = new FileReader();
 
 			// 事先定義好，當讀取成功後會觸發的事情
@@ -45,17 +45,17 @@ $(function (){
 
 				console.log(e);
 
-				// 這裡看到的 e.target.result 物件，是使用者的檔案被 FileReader 轉換成 base64 的字串格式，
-				// 在這裡我們選取圖檔，所以轉換出來的，會是如 『data:image/jpeg;base64,.....』這樣的字串樣式。
-				// 我們用它當作圖片路徑就對了。
+				// 這裡看到的1�7 e.target.result 物件，是使用者的檔案袄1�7 FileReader 轉換戄1�7 base64 的字串格式，
+				// 在�1�7�裡我�1�7�選取圖檔，扄1�7以轉換出來的，會是如 『data:image/jpeg;base64,.....』�1�7�樣的字串樣式�1�7�1�7
+				// 我�1�7�用它當作圖片路徑就對了〄1�7
 				$('.preview').attr('src', e.target.result);
 
-				// 檔案大小，把 Bytes 轉換為 KB
+				// 檔案大小，把 Bytes 轉換炄1�7 KB
 				var KB = format_float(e.total / 1024, 2);
-				$('.size').text("檔案大小：" + KB + " KB");
+				$('.size').text("檔案大小＄1�7" + KB + " KB");
 			}
 
-			// 因為上面定義好讀取成功的事情，所以這裡可以放心讀取檔案
+			// 因為上面定義好讀取成功的事情，所以�1�7�裡可以放心讄1�7取檔桄1�7
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
@@ -69,7 +69,7 @@ $(function (){
         
 
         <header class="header">
-			<h1>使用者編輯</h1>
+			<h1>使用者編輄1�7/h1>
         </header>
         <aside class="aside">      
             <ul>
@@ -120,7 +120,7 @@ $(function (){
 						<div>
 						座標
 						<a href="javascript: $('#map').dialog({
-						autoOpen: true, show:{effect:'drop', direction:'right', duration: 1500}, width: 'auto', height: 'auto', resizable: false});">【選擇地點】</a>
+						autoOpen: true, show:{effect:'drop', direction:'right', duration: 1500}, width: 'auto', height: 'auto', resizable: false});">【選擇地點�1�7�1�7/a>
 						<div class="map_div" title="分析報導" id="map" >
 						<iframe class="map_iframe" src="http://maps.google.com.tw/maps?f=q&amp;hl=zh-TW&amp;geocode=&amp;q=24.941698, 121.220479(文網股份有限公司)&amp;z=16&amp;output=embed&amp;t=" frameborder="0" height="100%"></iframe> 
 						<button type="button" class="pull-right btn btn-default" id="setMap">確認<br></button>

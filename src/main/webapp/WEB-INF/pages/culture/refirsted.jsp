@@ -1,42 +1,42 @@
 ﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true"%>
-<%@ page language="java" import="java.sql.*" %>
 <html>
 <head>
-<title>Culture_refirsted</title>
-<link href="recource/css/multiColumnTemplate.css" rel="stylesheet" type="text/css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>使用者註冊</title>
+<link href="/resources/css/userLogin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="container">
-  <header>
-    <div class="primary_header">
-      <h1 class="title"> 註冊</h1>
-    </div>
-</header>
+	<div id="login-box">
+		<center>
+    		<h3>使用者註冊</h3>
+	   </center> 
   <section class="left_article">   
 		<form name='registeredForm' 
 					action="insert" method="POST">
 	
-			<table>
+			<table width="300px">
 				<tr>
-					<td>帳號:</td>
-					<td><input type='text' name='username'></td>
+					<td colspan="1">帳號:</td>
+					<td colspan="2"><input type="text" name="username"></td>
 				</tr>
 				<tr>
-					<td>密碼:</td>
-					<td><input type='password' name='password' /></td>
+					<td colspan="1">密碼:</td>
+					<td colspan="2"><input type="password" name="password" /></td>
 				</tr>
 				<tr>
-					<td>信箱:</td>
-					<td><input type='email' name='email' /></td>
+					<td colspan="1">信箱:</td>
+					<td colspan="2"><input type="email" name="email" /></td>
 				</tr>
 				<tr>
 					<td>年齡:</td>
 					<td><input type='text' name='age'></td>
 				</tr>
         <tr>
-					<td>性別:</td>
-					<td>
+					<td colspan="1">性別:</td>
+					<td colspan="2">
             <input type="radio" name="p_sex" value="M" /> 男 
             <input type="radio" name="p_sex" value="F" /> 女
           </td>
@@ -51,6 +51,7 @@
 <footer class="secondary_header footer">
     <div class="copyright">&copy;2016 - <strong>culture</strong></div>
   </footer>
+  </div>
 </div>
 </body>
 </html>
