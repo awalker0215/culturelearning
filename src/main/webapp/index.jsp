@@ -42,7 +42,6 @@
 <script type="text/javascript">
 				//地圖
 			var map;
-			var sign = [];
 			var index = 0;
 			function initMap() {
 			  map = new google.maps.Map(document.getElementById('map'), {
@@ -56,18 +55,20 @@
 			<c:forEach items="${allmapinfo}" var="p">
 
 			  latLng = new google.maps.LatLng("${p.l_xaxis}", "${p.l_yaxis}");
-			  marker = new google.maps.Marker({
+			  markers[index] = new google.maps.Marker({
 			            position: latLng,
 			            map:map
 			    });
 			  info = new google.maps.InfoWindow({
 				    content: "${p.l_name}"
 			 });
-			  
+			  marker.addListener('click', function() {
+				    info.open(map, marker);
+				  });
 			  
 			  infos.push(info);
 			  markers.push(marker);	
-			  
+			  index++
 			</c:forEach>
 			}
 		</script>
