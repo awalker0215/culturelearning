@@ -15,6 +15,7 @@
 <!-- Main Container -->
 <div class="top_div">
 	<a align="right" href="/culture/login">【登入/註冊】</a>
+	<a align="right" href="/culture/addpage">【新增】</a>
 </div>
 <div class="container"> 
   <!-- Header -->
@@ -25,37 +26,44 @@
   <section class="intro">
     <div class="column">
       <!--h3>JOHN DOE</h3>-->
-      <img src="/resources/pic/profile.png" alt="" class="profile"> </div>
+      <c:forEach items="${ditailinfo}" var="p">
+      	<c:if test = "${p.f_filename == '' }">
+      	<img src="/resources/pic/profile.png" alt="" class="profile"> </div>
+      	</c:if>
+		<c:if test = "${p.f_filename != '' }">
+      	<img src="/resources/pic/${p.f_filename}${p.f_filetype}" alt="" class="profile"> </div>
+      </c:if>
+      </c:forEach>
     <div class="right_article">
       <table class="table">
         <tbody>
-          <tr >
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-</tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-</tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-</tr>
-                 <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-</tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-</tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-</tr>
+     	 	<tr>
+	        	<td width="50">類型：</td>
+	        	<c:forEach items="${ditailinfo}" var="p">
+		        <td><c:out value="${p.l_type}"/></td>
+		   		 </c:forEach>
+	        </tr>
+	        <tr>
+	        	<td width="50">名稱：</td>
+	           <c:forEach items="${ditailinfo}" var="p">
+		        <td><c:out value="${p.l_name}"/></td>
+		   		 </c:forEach>
+	        </tr>
+	        <tr>
+	         <td width="50">位置：</td>
+	            <c:forEach items="${ditailinfo}" var="p">
+		        <td><c:out value="${p.l_xaxis},${p.l_yaxis}"/></td>
+		   		 </c:forEach>
+	        </tr>
+	        <tr>
+	        <td width="50">內容：</td>
+	        <c:forEach items="${ditailinfo}" var="p">
+		        <td><c:out value="${p.v_vaule}"/></td>
+		   		 </c:forEach>
+	        </tr>
+		    
         </tbody>
       </table>
-<p>文字說明</p>
     </div>
   </section>
   <!-- Stats Gallery Section -->

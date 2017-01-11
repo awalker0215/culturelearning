@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"  
-    pageEncoding="GB18030"%>  
-<!doctype html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="true" language="java" contentType="text/html; charset=UTF-8"  
+    pageEncoding="UTF-8"%>
 <html>
     <head bgcolor="blue" text="white">
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="/resources/css/admin_2.css" rel="stylesheet" type="text/css">
-        <title>使用者編輄1�7/title>
+        <title>浣跨敤鑰呯法杓</title>
         
     </head>
     
@@ -17,9 +17,9 @@
 <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js">
 $(function (){
 	/**
-	 * 格式匄1�7
-	 * @param   num 要轉換的數字
-	 * @param   pos 指定小數第幾位做四捨五入
+	 * 鏍煎紡鍖�
+	 * @param   num 瑕佽綁鎻涚殑鏁稿瓧
+	 * @param   pos 鎸囧畾灏忔暩绗咕浣嶅仛鍥涙崹浜斿叆
 	 */
 	function format_float(num, pos)
 	{
@@ -29,33 +29,33 @@ $(function (){
  
  
 	/**
-	 * 預覽圄1�7
-	 * @param   input 輸入 input[type=file] 的1�7 this
+	 * 闋愯鍦�
+	 * @param   input 杓稿叆 input[type=file] 鐨� this
 	 */
 	function preview(input) {
 
-		// 若有選取檔案
+		// 鑻ユ湁閬稿彇妾旀
 		if (input.files && input.files[0]) {
 
-			// 建立丄1�7個物件，使用 Web APIs 的檔案讀取器(FileReader 物件) 來讀取使用�1�7�選取電腦中的檔桄1�7
+			// 寤虹珛涓�鍊嬬墿浠讹紝浣跨敤 Web APIs 鐨勬獢妗堣畝鍙栧櫒(FileReader 鐗╀欢) 渚嗚畝鍙栦娇鐢ㄨ�呴伕鍙栭浕鑵︿腑鐨勬獢妗�
 			var reader = new FileReader();
 
-			// 事先定義好，當讀取成功後會觸發的事情
+			// 浜嬪厛瀹氱京濂斤紝鐣惰畝鍙栨垚鍔熷緦鏈冭Ц鐧肩殑浜嬫儏
 			reader.onload = function (e) {
 
 				console.log(e);
 
-				// 這裡看到的1�7 e.target.result 物件，是使用者的檔案袄1�7 FileReader 轉換戄1�7 base64 的字串格式，
-				// 在�1�7�裡我�1�7�選取圖檔，扄1�7以轉換出來的，會是如 『data:image/jpeg;base64,.....』�1�7�樣的字串樣式�1�7�1�7
-				// 我�1�7�用它當作圖片路徑就對了〄1�7
+				// 閫欒！鐪嬪埌鐨� e.target.result 鐗╀欢锛屾槸浣跨敤鑰呯殑妾旀琚� FileReader 杞夋彌鎴� base64 鐨勫瓧涓叉牸寮忥紝
+				// 鍦ㄩ�欒！鎴戝�戦伕鍙栧湒妾旓紝鎵�浠ヨ綁鎻涘嚭渚嗙殑锛屾渻鏄 銆巇ata:image/jpeg;base64,.....銆忛�欐ǎ鐨勫瓧涓叉ǎ寮忋��
+				// 鎴戝�戠敤瀹冪暥浣滃湒鐗囪矾寰戝氨灏嶄簡銆�
 				$('.preview').attr('src', e.target.result);
 
-				// 檔案大小，把 Bytes 轉換炄1�7 KB
+				// 妾旀澶у皬锛屾妸 Bytes 杞夋彌鐐� KB
 				var KB = format_float(e.total / 1024, 2);
-				$('.size').text("檔案大小＄1�7" + KB + " KB");
+				$('.size').text("妾旀澶у皬锛�" + KB + " KB");
 			}
 
-			// 因為上面定義好讀取成功的事情，所以�1�7�裡可以放心讄1�7取檔桄1�7
+			// 鍥犵偤涓婇潰瀹氱京濂借畝鍙栨垚鍔熺殑浜嬫儏锛屾墍浠ラ�欒！鍙互鏀惧績璁�鍙栨獢妗�
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
@@ -69,13 +69,13 @@ $(function (){
         
 
         <header class="header">
-			<h1>使用者編輄1�7/h1>
+			<h1>浣跨敤鑰呯法杓�/h1>
         </header>
         <aside class="aside">      
             <ul>
-				<li>活動</li>
-				<li>建築</li>
-				<li>生物</li>
+				<li>娲诲嫊</li>
+				<li>寤虹瘔</li>
+				<li>鐢熺墿</li>
                 <p> sing out</p>   			
             </ul>
                     
@@ -88,17 +88,17 @@ $(function (){
 			<div class="row">
 				<div id="div1">
 					<div class="inner">
-						<h3>活動</h3>
+						<h3>娲诲嫊</h3>
 					</div>
 				</div>			
 				<div id="div2">
 					<div class="inner">
-						<h3>建築</h3>
+						<h3>寤虹瘔</h3>
 					</div>
 				</div>
 				<div id="div3">
 					<div class="inner">
-						<h3>生物</h3>
+						<h3>鐢熺墿</h3>
 					</div>
 				</div>
 			</div>	 
@@ -108,22 +108,22 @@ $(function (){
 		  </div>
 			  <div class="right_div">
 				<div>
-					  <h3>新增</h3>
+					  <h3>鏂板</h3>
 					</div>
 					<div class="box-body">
 					  <form action="#" method="post">
 						<div class="form-group"> </div>
 						<div class="form-group">
-					  主題 
-						  <input type="text" class="form-control" name="subject" placeholder="主題">
+					  涓婚 
+						  <input type="text" class="form-control" name="subject" placeholder="涓婚">
 						</div>
 						<div>
-						座標
+						搴ф
 						<a href="javascript: $('#map').dialog({
-						autoOpen: true, show:{effect:'drop', direction:'right', duration: 1500}, width: 'auto', height: 'auto', resizable: false});">【選擇地點�1�7�1�7/a>
-						<div class="map_div" title="分析報導" id="map" >
-						<iframe class="map_iframe" src="http://maps.google.com.tw/maps?f=q&amp;hl=zh-TW&amp;geocode=&amp;q=24.941698, 121.220479(文網股份有限公司)&amp;z=16&amp;output=embed&amp;t=" frameborder="0" height="100%"></iframe> 
-						<button type="button" class="pull-right btn btn-default" id="setMap">確認<br></button>
+						autoOpen: true, show:{effect:'drop', direction:'right', duration: 1500}, width: 'auto', height: 'auto', resizable: false});">銆愰伕鎿囧湴榛炪��/a>
+						<div class="map_div" title="鍒嗘瀽鍫卞皫" id="map" >
+						<iframe class="map_iframe" src="http://maps.google.com.tw/maps?f=q&amp;hl=zh-TW&amp;geocode=&amp;q=24.941698, 121.220479(鏂囩恫鑲′唤鏈夐檺鍏徃)&amp;z=16&amp;output=embed&amp;t=" frameborder="0" height="100%"></iframe> 
+						<button type="button" class="pull-right btn btn-default" id="setMap">纰鸿獚<br></button>
 						</div>
 						</div>
 						<div>
@@ -139,12 +139,12 @@ $(function (){
 						 
 						</div>
 						 <div>
-						  <textarea class="textarea" placeholder="詳細說明"></textarea>
+						  <textarea class="textarea" placeholder="瑭崇窗瑾槑"></textarea>
 						</div>
 					  </form>
 					</div>
 					<div class="box-footer clearfix">
-					  <button type="button" class="pull-right btn btn-default" id="submit">新增<br>
+					  <button type="button" class="pull-right btn btn-default" id="submit">鏂板<br>
 					  </button>
 					</div>
 				  </div>

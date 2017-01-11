@@ -55,6 +55,11 @@ public class StudentService {
 		return allmapinfo;
 	}
 
+	public List getditail(String id) {
+		List<Map<String, Object>> allditail = studentRepository.selectallditails(id);
+		return allditail;
+	}
+
 
 	
 }

@@ -51,12 +51,14 @@ public class StudentController {
 	}
 
 	@RequestMapping(value = { "culture/Reception" }, method = RequestMethod.GET)
-	public ModelAndView defaultPage() {
-
+	public ModelAndView defaultPage(HttpServletRequest request,
+			HttpServletResponse response) {
 		ModelAndView model = new ModelAndView();
-		System.out.println("test");
-		/*List getactiveinfo = studentService.getactiveinfo();
-		model.addObject("getactiveinfo", getactiveinfo);*/
+		String id = (String)request.getParameter("id");
+		System.out.println(id);
+		List<Map<String, Object>> ditailinfo= studentService.getditail(id);
+		model.addObject("ditailinfo", ditailinfo);
+
 	           
 		model.setViewName("culture/Reception");
 		return model;
@@ -76,13 +78,10 @@ public class StudentController {
 
 	}
 	
-	@RequestMapping(value = { "culture/newinfo" }, method = RequestMethod.GET)
-	public ModelAndView addPage() {
-
+	@RequestMapping(value = { "culture/addpage" }, method = RequestMethod.GET)
+	public ModelAndView addPage(HttpServletRequest request,
+			HttpServletResponse response) {
 		ModelAndView model = new ModelAndView();
-		
-		/*List getactiveinfo = studentService.getactiveinfo();
-		model.addObject("getactiveinfo", getactiveinfo);*/
 	           
 		model.setViewName("culture/addPage");
 		return model;

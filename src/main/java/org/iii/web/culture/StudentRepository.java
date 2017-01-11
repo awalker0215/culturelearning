@@ -123,5 +123,12 @@ public class StudentRepository {
 			
 			return list;
 	}
+
+
+	public List<Map<String, Object>> selectallditails(String id) {
+		String sql = "SELECT * FROM details where l_id="+id;
+		List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql);
+		return list;
+	}
 	
 }

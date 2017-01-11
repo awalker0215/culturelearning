@@ -59,7 +59,7 @@
 			    });
 			  markers.push(marker);	
 			  
-			  var html = "<a href="+"culture/Reception"+">"+"<p>"+"名稱：" + "${p.l_name}"+"</p>"+"</a>";
+			  var html = "<a href="+"culture/Reception?id="+"${p.l_id}"+">"+"<p>"+"名稱：" + "${p.l_name}"+"</p>"+"</a>";
 	          var dital = "${p.l_id}";
 			  //html = html +"<p>地點：" + dataPhoto.position +"</p>";
 	          //html = html +"<p>種類：" + dataPhoto.type +"</p>";
