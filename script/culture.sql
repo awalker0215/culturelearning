@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016-12-31 09:20:27
+-- 產生時間： 2017-01-07 05:57:49
 -- 伺服器版本: 10.1.19-MariaDB
 -- PHP 版本： 5.6.28
 
@@ -125,8 +125,8 @@ CREATE TABLE `laction` (
   `l_id` int(11) NOT NULL,
   `l_type` varchar(20) CHARACTER SET utf8 NOT NULL,
   `l_name` varchar(20) CHARACTER SET utf8 NOT NULL,
-  `l_x-axis` decimal(9,6) NOT NULL,
-  `l_y-axis` decimal(9,6) NOT NULL,
+  `l_xaxis` decimal(9,6) NOT NULL,
+  `l_yaxis` decimal(9,6) NOT NULL,
   `a_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -134,10 +134,12 @@ CREATE TABLE `laction` (
 -- 資料表的匯出資料 `laction`
 --
 
-INSERT INTO `laction` (`l_id`, `l_type`, `l_name`, `l_x-axis`, `l_y-axis`, `a_id`) VALUES
+INSERT INTO `laction` (`l_id`, `l_type`, `l_name`, `l_xaxis`, `l_yaxis`, `a_id`) VALUES
 (1, '活動', '路跑', '23.574574', '119.580891', 6),
 (3, '活動', '收發室', '23.575864', '119.580784', 6),
-(4, '活動', '抗議校長只開給物流專任', '23.575440', '119.581155', 6);
+(4, '活動', '抗議校長只開給物流專任', '23.575440', '119.581155', 6),
+(5, '活動', '中興國小運動會', '23.574710', '119.574374', 6),
+(7, '活動', '文光國中運動會', '23.573196', '119.569460', 6);
 
 -- --------------------------------------------------------
 
@@ -164,7 +166,15 @@ INSERT INTO `profile` (`p_sex`, `p_age`, `c_id`, `username`) VALUES
 ('F', 45, 5, 'reetrrere'),
 ('M', 458, 6, 'dgd'),
 ('M', 458, 7, 'dgd'),
-('F', 47, 8, 'efewff');
+('F', 47, 8, 'efewff'),
+('M', 20, 9, 'awalker0215'),
+('M', 20, 10, 'awalker0215'),
+('M', 0, 11, 'DD'),
+('M', 23, 12, 'test'),
+('M', 58, 13, 'fsedfsf'),
+('M', 20, 14, 'qqqq'),
+('M', 45, 15, 'aaaaaa'),
+('M', 45, 16, 'aaaaaa');
 
 -- --------------------------------------------------------
 
@@ -184,11 +194,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `password`, `email`, `enabled`) VALUES
+('aaaaaa', '0b4e7a0e5fe84ad35fb5f95b9ceeac79', 'aaaaaa@aaaaaa.aaaaaa', 1),
 ('alex', 'e10adc3949ba59abbe56e057f20f883e', 'alex@test.org.tw', 1),
 ('amelia', 'e10adc3949ba59abbe56e057f20f883e', 'adf@123.123.123', 1),
+('awalker0215', '63a9f0ea7bb98050796b649e85481845', 'awalker0215@gmail.com', 1),
+('DD', '350bfcb1e3cfb28ddff48ce525d4f139', 'DD.DD@DD.DD', 1),
+('fsedfsf', '1e8332770f09e315c53a6863192ff464', 'fsdf@54.54', 1),
 ('maokao', 'e10adc3949ba59abbe56e057f20f883e', 'asdfs@123.123.213', 1),
+('qqqq', '437599f1ea3514f8969f161a6606ce18', 'qqqqq@qqqq.qqqq', 1),
 ('ranma', 'e10adc3949ba59abbe56e057f20f883e', 'maokao25@gmail.com', 1),
-('root', 'e10adc3949ba59abbe56e057f20f883e', 'mkyong@test.org.tw', 1);
+('root', 'e10adc3949ba59abbe56e057f20f883e', 'mkyong@test.org.tw', 1),
+('test', '098f6bcd4621d373cade4e832627b4f6', 'test@test.test', 1);
 
 -- --------------------------------------------------------
 
@@ -210,8 +226,14 @@ INSERT INTO `user_roles` (`user_role_id`, `username`, `role`) VALUES
 (5, 'amelia', 'ROLE_ADMIN'),
 (4, 'maokao', 'ROLE_ADMIN'),
 (2, 'root', 'ROLE_ADMIN'),
+(15, 'aaaaaa', 'ROLE_USER'),
 (3, 'alex', 'ROLE_USER'),
-(1, 'root', 'ROLE_USER');
+(10, 'awalker0215', 'ROLE_USER'),
+(11, 'DD', 'ROLE_USER'),
+(13, 'fsedfsf', 'ROLE_USER'),
+(14, 'qqqq', 'ROLE_USER'),
+(1, 'root', 'ROLE_USER'),
+(12, 'test', 'ROLE_USER');
 
 -- --------------------------------------------------------
 
@@ -343,12 +365,12 @@ ALTER TABLE `filename`
 -- 使用資料表 AUTO_INCREMENT `laction`
 --
 ALTER TABLE `laction`
-  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- 使用資料表 AUTO_INCREMENT `user_roles`
 --
 ALTER TABLE `user_roles`
-  MODIFY `user_role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- 已匯出資料表的限制(Constraint)
 --

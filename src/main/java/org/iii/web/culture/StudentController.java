@@ -54,7 +54,20 @@ public class StudentController {
 	public ModelAndView defaultPage() {
 
 		ModelAndView model = new ModelAndView();
-		
+		System.out.println("test");
+		/*List getactiveinfo = studentService.getactiveinfo();
+		model.addObject("getactiveinfo", getactiveinfo);*/
+	           
+		model.setViewName("culture/Reception");
+		return model;
+
+	}
+	
+	@RequestMapping(value = { "culture/Receptiontest" }, method = RequestMethod.GET)
+	public ModelAndView defaultPagetest() {
+
+		ModelAndView model = new ModelAndView();
+		System.out.println("test");
 		/*List getactiveinfo = studentService.getactiveinfo();
 		model.addObject("getactiveinfo", getactiveinfo);*/
 	           
@@ -105,7 +118,8 @@ public class StudentController {
 		int age = (int)Integer.parseInt(request.getParameter("age"));
 		studentService.insertpro(username,password, sex, email, age, "1");
 		System.out.println("insert a user");
-		
+		List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
+		model.addObject("allmapinfo", allmapinfo);
 		/*List alluserinfo = studentService.getactiveinfo();
 		model.addObject("alluserinfo", alluserinfo);*/
 

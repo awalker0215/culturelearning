@@ -17,6 +17,7 @@
 <div class="top_div">
 	<a align="right" href="culture/login">【登入/註冊】</a>
 </div>
+
 <div class="container">
 			<div class="primary_header">
 			  <h1 class="title">首頁</h1>
@@ -35,44 +36,47 @@
 				  <span class="sp_span">生物</span>
 			 	  <span class="sp_span">生物</span><br>
 			  </ul>
-			    <div class="copyright">&copy;2016 - culture</div>
+			    <div class="copyright">&copy;2016 - cultion</div>
 			</div>
 		</div>
 <script type="text/javascript">
 				//地圖
 			var map;
-			var sign = [];
+			var xxix = [];
+			var yxix = [];
+			var markers = [];
+			var infowin = [];
+			var infos = [];
 			var index = 0;
+		
 			function initMap() {
+			<c:forEach items="${allmapinfo}" var="a">
+				xxix.push("${a.l_xaxis}")
+				yxix.push("${a.l_yaxis}")
+				infos.push("${a.l_name}")
+			</c:forEach>
 			  map = new google.maps.Map(document.getElementById('map'), {
-				center: {lat: 23.577760, lng: 119.577125},
+				center: {lat: 23.574979, lng: 119.576194},
 				zoom: 16
 			  });
-			  var infoWindow_marker = new google.maps.InfoWindow();
-			  var markers = [];
-			<c:forEach items="${allmapinfo}" var="p">
-
-			  latLng = new google.maps.LatLng("${p.l_xaxis}", "${p.l_yaxis}");
-			  marker = new google.maps.Marker({
-			            position: latLng,
-			            map:map
-			    });
-			  markers.push(marker);	
+			  for(var i = 0;i<xxix.length;i++){
+				  latLng = new google.maps.LatLng(xxix[i], yxix[i]);
+				  markers[i] = new google.maps.Marker({
+				            position: latLng,
+				            map:map,
+				            title:infos[i]
+				    });
+				  
+				  infowin[i] = new google.maps.InfoWindow({
+					    content: infos[i]
+				  });
+				  
+				  markers[i].addListener('click', function() {
+					    infowin[i].open(map, markers[i]);
+					  });
+			  }
 			  
-			  var html = "<a href="+"culture/Reception"+">"+"<p>"+"名稱：" + "${p.l_name}"+"</p>"+"</a>";
-	          var dital = "${p.l_id}";
-			  //html = html +"<p>地點：" + dataPhoto.position +"</p>";
-	          //html = html +"<p>種類：" + dataPhoto.type +"</p>";
-	          bindInfoWindow(marker, map, infoWindow_marker, html); 
-			</c:forEach>
 			}
-			function bindInfoWindow(marker, map, infoWindow, html) {
-		        // 除了 click 事件，也可以用 mouseover 等事件觸發氣泡框顯示
-		        google.maps.event.addListener(marker, 'click', function() { 
-		            infoWindow.setContent(html);
-		            infoWindow.open(map, marker);
-		      });
-		    }
 		</script>
 	<script async defer
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0YHjxhTqUPSIQtCRRLPsKmYZ8NUmiX00&callback=initMap">
@@ -92,7 +96,7 @@
 				});
 
 
-				$("#mwt_slider_content").mouseleave(function(){　//滑鼠離開後
+				$("#mwt_slider_content").mouseleave(function(){
 					$("#mwt_mwt_slider_scroll").animate( { left:'-'+w+'px' }, 400 ,'swing');	
 				});	
 			});

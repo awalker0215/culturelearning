@@ -1,5 +1,8 @@
-﻿<%@ page language="java" contentType="text/html"; charset="UTF-8"  
-    pageEncoding="UTF-8"%>  
+﻿<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  
+    pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -11,7 +14,7 @@
 <body>
 <!-- Main Container -->
 <div class="top_div">
-	<a align="right" href="culture/login">【登入/註冊】</a>
+	<a align="right" href="/culture/login">【登入/註冊】</a>
 </div>
 <div class="container"> 
   <!-- Header -->
@@ -22,7 +25,7 @@
   <section class="intro">
     <div class="column">
       <!--h3>JOHN DOE</h3>-->
-      <img src="resources/pic/profile.png" alt="" class="profile"> </div>
+      <img src="/resources/pic/profile.png" alt="" class="profile"> </div>
     <div class="right_article">
       <table class="table">
         <tbody>
@@ -58,19 +61,19 @@
   <!-- Stats Gallery Section -->
   
   <div class="gallery">
-    <div class="thumbnail"> <a href="#"><img src="images/bkg_06.jpg" alt="" width="2000" class="cards"/></a>
+    <div class="thumbnail"> <a href="#"><img src="/resources/pic/bkg_06.jpg" alt="" width="2000" class="cards"/></a>
       <h4>TITLE</h4>
       <p class="tag">HTML, CSS, JS, WordPress</p>
 </div>
-    <div class="thumbnail"> <a href="#"><img src="images/bkg_06.jpg" alt="" width="2000" class="cards"/></a>
+    <div class="thumbnail"> <a href="#"><img src="/resources/pic/bkg_06.jpg" alt="" width="2000" class="cards"/></a>
       <h4>TITLE</h4>
       <p class="tag">HTML, CSS, JS, WordPress</p>
 </div>
-    <div class="thumbnail"> <a href="#"><img src="images/bkg_06.jpg" alt="" width="2000" class="cards"/></a>
+    <div class="thumbnail"> <a href="#"><img src="/resources/pic/bkg_06.jpg" alt="" width="2000" class="cards"/></a>
       <h4>TITLE</h4>
       <p class="tag">HTML, CSS, JS, WordPress</p>
 </div>
-    <div class="thumbnail"> <a href="#"><img src="images/bkg_06.jpg" alt="" width="2000" class="cards"/></a>
+    <div class="thumbnail"> <a href="#"><img src="/resources/pic/bkg_06.jpg" alt="" width="2000" class="cards"/></a>
       <h4>TITLE</h4>
       <p class="tag">HTML, CSS, JS, WordPress</p>
 </div>

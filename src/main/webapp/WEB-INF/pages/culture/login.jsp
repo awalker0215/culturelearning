@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>ä½¿ç¨èç»å¥</title>
+<title>登入</title>
 <link  href="/resources/css/userLogin.css"  rel="stylesheet" type="text/css">
 </head>
 <body onload="document.loginForm.username.focus();">
