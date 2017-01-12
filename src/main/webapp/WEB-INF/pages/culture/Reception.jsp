@@ -27,12 +27,14 @@
     <div class="column">
       <!--h3>JOHN DOE</h3>-->
       <c:forEach items="${ditailinfo}" var="p">
-      	<c:if test = "${p.f_filename == '' }">
-      	<img src="/resources/pic/profile.png" alt="" class="profile"> </div>
-      	</c:if>
-		<c:if test = "${p.f_filename != '' }">
-      	<img src="/resources/pic/${p.f_filename}${p.f_filetype}" alt="" class="profile"> </div>
-      </c:if>
+      	<c:choose>
+      		<c:when test = "${not empty p.f_filename}">
+      			<img src="/resources/pic/${p.f_filename}${p.f_filetype}" alt="" class="profile"> </div>
+      		</c:when>
+      		<c:when test = "${empty p.f_filename}">
+      			<img src="/resources/pic/profile.png" alt="" class="profile"> </div>
+      		</c:when>
+      	</c:choose>
       </c:forEach>
     <div class="right_article">
       <table class="table">

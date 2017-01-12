@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2017-01-07 05:57:49
+-- 產生時間： 2017-01-12 02:47:34
 -- 伺服器版本: 10.1.19-MariaDB
 -- PHP 版本： 5.6.28
 
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `class_ activity`
+-- 資料表結構 `class_activity`
 --
 
-CREATE TABLE `class_ activity` (
+CREATE TABLE `class_activity` (
   `a_id` int(11) NOT NULL,
   `a_type` varchar(20) CHARACTER SET utf8 NOT NULL,
   `a_name` varchar(20) CHARACTER SET utf8 NOT NULL,
@@ -36,10 +36,10 @@ CREATE TABLE `class_ activity` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- 資料表的匯出資料 `class_ activity`
+-- 資料表的匯出資料 `class_activity`
 --
 
-INSERT INTO `class_ activity` (`a_id`, `a_type`, `a_name`, `c_id`, `a_cloumn`, `username`) VALUES
+INSERT INTO `class_activity` (`a_id`, `a_type`, `a_name`, `c_id`, `a_cloumn`, `username`) VALUES
 (6, '活動', '澎科大校慶', 1, 0, 'root');
 
 -- --------------------------------------------------------
@@ -87,18 +87,33 @@ INSERT INTO `class_field` (`f_id`, `f_column`, `c_id`) VALUES
 --
 
 CREATE TABLE `class_vaule` (
-  `v_id` int(11) NOT NULL,
   `v_vaule` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `a_id` int(11) NOT NULL,
-  `f_id` int(11) NOT NULL
+  `l_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 資料表的匯出資料 `class_vaule`
 --
 
-INSERT INTO `class_vaule` (`v_id`, `v_vaule`, `a_id`, `f_id`) VALUES
-(3, '200人', 6, 3);
+INSERT INTO `class_vaule` (`v_vaule`, `l_id`) VALUES
+('遠航路跑', 1),
+('10:30~12:30 \r\n14:30~5:30\r\n可拿信', 3);
+
+-- --------------------------------------------------------
+
+--
+-- 替換檢視表以便查看 `details`
+--
+CREATE TABLE `details` (
+`l_id` int(11)
+,`l_type` varchar(20)
+,`l_name` varchar(20)
+,`l_xaxis` decimal(9,6)
+,`l_yaxis` decimal(9,6)
+,`v_vaule` varchar(200)
+,`f_filename` varchar(20)
+,`f_filetype` varchar(20)
+);
 
 -- --------------------------------------------------------
 
@@ -107,13 +122,17 @@ INSERT INTO `class_vaule` (`v_id`, `v_vaule`, `a_id`, `f_id`) VALUES
 --
 
 CREATE TABLE `filename` (
-  `f_id` int(11) NOT NULL,
-  `f_type` varchar(20) CHARACTER SET utf8 NOT NULL,
-  `f_name` varchar(20) CHARACTER SET utf8 NOT NULL,
   `f_filename` varchar(20) CHARACTER SET utf8 NOT NULL,
   `f_filetype` varchar(20) CHARACTER SET utf8 NOT NULL,
-  `a_id` int(11) NOT NULL
+  `l_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 資料表的匯出資料 `filename`
+--
+
+INSERT INTO `filename` (`f_filename`, `f_filetype`, `l_id`) VALUES
+('run', '.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -139,7 +158,31 @@ INSERT INTO `laction` (`l_id`, `l_type`, `l_name`, `l_xaxis`, `l_yaxis`, `a_id`)
 (3, '活動', '收發室', '23.575864', '119.580784', 6),
 (4, '活動', '抗議校長只開給物流專任', '23.575440', '119.581155', 6),
 (5, '活動', '中興國小運動會', '23.574710', '119.574374', 6),
-(7, '活動', '文光國中運動會', '23.573196', '119.569460', 6);
+(7, '活動', '文光國中運動會', '23.573196', '119.569460', 6),
+(8, '活動', '儒儒打德州撲克賺了100塊', '22.256513', '113.515554', 6),
+(9, 'Bulid', 'MyHome', '23.575305', '119.573143', 6),
+(10, '活動', '唱歌', '23.568903', '119.576593', 6),
+(11, '活動', '快樂樂悠遊', '23.568240', '119.579992', 6),
+(12, '活動', '明翰蛋蛋的哀傷', '23.564574', '119.479605', 6),
+(13, '活動', 'ALLFORCE壓榨公司', '23.573439', '119.582435', 6),
+(14, '活動', '乎巄奎壁山', '23.597967', '119.672407', 6),
+(15, '活動', '慣老闆的家', '23.580571', '119.581485', 6),
+(16, '活動', 'tset', '23.575816', '119.579369', 6),
+(17, '活動', 'test2', '23.576268', '119.577271', 6),
+(18, '活動', '123', '23.577409', '119.575705', 6);
+
+-- --------------------------------------------------------
+
+--
+-- 替換檢視表以便查看 `location`
+--
+CREATE TABLE `location` (
+`l_id` int(11)
+,`l_type` varchar(20)
+,`l_name` varchar(20)
+,`l_xaxis` decimal(9,6)
+,`l_yaxis` decimal(9,6)
+);
 
 -- --------------------------------------------------------
 
@@ -174,7 +217,26 @@ INSERT INTO `profile` (`p_sex`, `p_age`, `c_id`, `username`) VALUES
 ('M', 58, 13, 'fsedfsf'),
 ('M', 20, 14, 'qqqq'),
 ('M', 45, 15, 'aaaaaa'),
-('M', 45, 16, 'aaaaaa');
+('M', 45, 16, 'aaaaaa'),
+('F', 25, 17, 'QQQQ1234'),
+('F', 25, 18, 'QQQQ1234'),
+('M', 11, 19, 'ntcvs'),
+('M', 11, 20, 'ntcvs'),
+('M', 22, 21, 'hhhh');
+
+-- --------------------------------------------------------
+
+--
+-- 替換檢視表以便查看 `test`
+--
+CREATE TABLE `test` (
+`l_id` int(11)
+,`l_type` varchar(20)
+,`l_name` varchar(20)
+,`l_xaxis` decimal(9,6)
+,`l_yaxis` decimal(9,6)
+,`v_vaule` varchar(200)
+);
 
 -- --------------------------------------------------------
 
@@ -200,11 +262,13 @@ INSERT INTO `users` (`username`, `password`, `email`, `enabled`) VALUES
 ('awalker0215', '63a9f0ea7bb98050796b649e85481845', 'awalker0215@gmail.com', 1),
 ('DD', '350bfcb1e3cfb28ddff48ce525d4f139', 'DD.DD@DD.DD', 1),
 ('fsedfsf', '1e8332770f09e315c53a6863192ff464', 'fsdf@54.54', 1),
+('hhhh', 'c1181aacf646b97f0a0a782db351a405', 'hhhhh@hhhhh.hhhhh', 1),
 ('maokao', 'e10adc3949ba59abbe56e057f20f883e', 'asdfs@123.123.213', 1),
+('ntcvs', 'eff0dd6626ffa2e3059e0becac0f879e', 'iiiiii111i1l1ll||@llllll.111II111ll', 1),
 ('qqqq', '437599f1ea3514f8969f161a6606ce18', 'qqqqq@qqqq.qqqq', 1),
+('QQQQ1234', '25d55ad283aa400af464c76d713c07ad', 'Q@Q', 1),
 ('ranma', 'e10adc3949ba59abbe56e057f20f883e', 'maokao25@gmail.com', 1),
-('root', 'e10adc3949ba59abbe56e057f20f883e', 'mkyong@test.org.tw', 1),
-('test', '098f6bcd4621d373cade4e832627b4f6', 'test@test.test', 1);
+('root', 'e10adc3949ba59abbe56e057f20f883e', 'mkyong@test.org.tw', 1);
 
 -- --------------------------------------------------------
 
@@ -231,7 +295,10 @@ INSERT INTO `user_roles` (`user_role_id`, `username`, `role`) VALUES
 (10, 'awalker0215', 'ROLE_USER'),
 (11, 'DD', 'ROLE_USER'),
 (13, 'fsedfsf', 'ROLE_USER'),
+(21, 'hhhh', 'ROLE_USER'),
+(19, 'ntcvs', 'ROLE_USER'),
 (14, 'qqqq', 'ROLE_USER'),
+(17, 'QQQQ1234', 'ROLE_USER'),
 (1, 'root', 'ROLE_USER'),
 (12, 'test', 'ROLE_USER');
 
@@ -241,11 +308,34 @@ INSERT INTO `user_roles` (`user_role_id`, `username`, `role`) VALUES
 -- 替換檢視表以便查看 `webtest`
 --
 CREATE TABLE `webtest` (
-`c_type` varchar(20)
-,`a_name` varchar(20)
-,`f_column` varchar(20)
-,`v_vaule` varchar(200)
 );
+
+-- --------------------------------------------------------
+
+--
+-- 檢視表結構 `details`
+--
+DROP TABLE IF EXISTS `details`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `details`  AS  select `l`.`l_id` AS `l_id`,`l`.`l_type` AS `l_type`,`l`.`l_name` AS `l_name`,`l`.`l_xaxis` AS `l_xaxis`,`l`.`l_yaxis` AS `l_yaxis`,`v`.`v_vaule` AS `v_vaule`,`f`.`f_filename` AS `f_filename`,`f`.`f_filetype` AS `f_filetype` from ((`laction` `l` left join `class_vaule` `v` on((`l`.`l_id` = `v`.`l_id`))) left join `filename` `f` on((`l`.`l_id` = `f`.`l_id`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- 檢視表結構 `location`
+--
+DROP TABLE IF EXISTS `location`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `location`  AS  select `laction`.`l_id` AS `l_id`,`laction`.`l_type` AS `l_type`,`laction`.`l_name` AS `l_name`,`laction`.`l_xaxis` AS `l_xaxis`,`laction`.`l_yaxis` AS `l_yaxis` from `laction` ;
+
+-- --------------------------------------------------------
+
+--
+-- 檢視表結構 `test`
+--
+DROP TABLE IF EXISTS `test`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `test`  AS  select `l`.`l_id` AS `l_id`,`l`.`l_type` AS `l_type`,`l`.`l_name` AS `l_name`,`l`.`l_xaxis` AS `l_xaxis`,`l`.`l_yaxis` AS `l_yaxis`,`v`.`v_vaule` AS `v_vaule` from (`laction` `l` left join `class_vaule` `v` on((`l`.`l_id` = `v`.`l_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -261,9 +351,9 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 
 --
--- 資料表索引 `class_ activity`
+-- 資料表索引 `class_activity`
 --
-ALTER TABLE `class_ activity`
+ALTER TABLE `class_activity`
   ADD PRIMARY KEY (`a_id`),
   ADD KEY `a_id` (`a_id`),
   ADD KEY `a_cloumn` (`a_cloumn`),
@@ -289,18 +379,15 @@ ALTER TABLE `class_field`
 -- 資料表索引 `class_vaule`
 --
 ALTER TABLE `class_vaule`
-  ADD PRIMARY KEY (`v_id`),
-  ADD UNIQUE KEY `a_id` (`a_id`),
-  ADD KEY `v_id` (`v_id`),
-  ADD KEY `f_id` (`f_id`);
+  ADD PRIMARY KEY (`l_id`),
+  ADD KEY `l_id` (`l_id`);
 
 --
 -- 資料表索引 `filename`
 --
 ALTER TABLE `filename`
-  ADD PRIMARY KEY (`f_id`),
-  ADD UNIQUE KEY `a_id` (`a_id`),
-  ADD KEY `f_id` (`f_id`);
+  ADD PRIMARY KEY (`l_id`),
+  ADD UNIQUE KEY `a_id` (`l_id`);
 
 --
 -- 資料表索引 `laction`
@@ -337,9 +424,9 @@ ALTER TABLE `user_roles`
 --
 
 --
--- 使用資料表 AUTO_INCREMENT `class_ activity`
+-- 使用資料表 AUTO_INCREMENT `class_activity`
 --
-ALTER TABLE `class_ activity`
+ALTER TABLE `class_activity`
   MODIFY `a_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- 使用資料表 AUTO_INCREMENT `class_all`
@@ -352,34 +439,24 @@ ALTER TABLE `class_all`
 ALTER TABLE `class_field`
   MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- 使用資料表 AUTO_INCREMENT `class_vaule`
---
-ALTER TABLE `class_vaule`
-  MODIFY `v_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- 使用資料表 AUTO_INCREMENT `filename`
---
-ALTER TABLE `filename`
-  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- 使用資料表 AUTO_INCREMENT `laction`
 --
 ALTER TABLE `laction`
-  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- 使用資料表 AUTO_INCREMENT `user_roles`
 --
 ALTER TABLE `user_roles`
-  MODIFY `user_role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `user_role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- 已匯出資料表的限制(Constraint)
 --
 
 --
--- 資料表的 Constraints `class_ activity`
+-- 資料表的 Constraints `class_activity`
 --
-ALTER TABLE `class_ activity`
-  ADD CONSTRAINT `class_ activity_ibfk_1` FOREIGN KEY (`c_id`) REFERENCES `class_all` (`c_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `class_activity`
+  ADD CONSTRAINT `class_activity_ibfk_1` FOREIGN KEY (`c_id`) REFERENCES `class_all` (`c_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的 Constraints `class_field`
@@ -391,20 +468,19 @@ ALTER TABLE `class_field`
 -- 資料表的 Constraints `class_vaule`
 --
 ALTER TABLE `class_vaule`
-  ADD CONSTRAINT `class_vaule_ibfk_1` FOREIGN KEY (`a_id`) REFERENCES `class_ activity` (`a_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `class_vaule_ibfk_2` FOREIGN KEY (`f_id`) REFERENCES `class_field` (`f_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `class_vaule_ibfk_3` FOREIGN KEY (`l_id`) REFERENCES `laction` (`l_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的 Constraints `filename`
 --
 ALTER TABLE `filename`
-  ADD CONSTRAINT `filename_ibfk_1` FOREIGN KEY (`a_id`) REFERENCES `class_ activity` (`a_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `filename_ibfk_1` FOREIGN KEY (`l_id`) REFERENCES `laction` (`l_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的 Constraints `laction`
 --
 ALTER TABLE `laction`
-  ADD CONSTRAINT `laction_ibfk_1` FOREIGN KEY (`a_id`) REFERENCES `class_ activity` (`a_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `laction_ibfk_1` FOREIGN KEY (`a_id`) REFERENCES `class_activity` (`a_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
