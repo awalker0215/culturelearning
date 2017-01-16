@@ -83,7 +83,7 @@ public class StudentController {
 			HttpServletResponse response) {
 		ModelAndView model = new ModelAndView();
 	           
-		model.setViewName("culture/addPage");
+		model.setViewName("culture/user_edit");
 		return model;
 
 	}

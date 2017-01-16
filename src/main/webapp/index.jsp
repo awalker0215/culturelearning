@@ -30,11 +30,13 @@
 			<span>類</span>	
 		</div>
 			<div id="mwt_slider_content">
+			<form>
 			  <ul>
-				  <span class="sp_span">生物</span>
-				  <span class="sp_span">生物</span>
-			 	  <span class="sp_span">生物</span><br>
+				  <span class="sp_span"><input type="checkbox" value="1" name="class_1">活動</span>
+				  <span class="sp_span"><input type="checkbox" value="2" name="class_2">建築</span>
+			 	  <span class="sp_span"><input type="checkbox" value="3" name="class_3">生物</span><br>
 			  </ul>
+			  <form>
 			    <div class="copyright">&copy;2016 - culture</div>
 			</div>
 		</div>
@@ -49,6 +51,7 @@
 				zoom: 16
 			  });
 			  var infoWindow_marker = new google.maps.InfoWindow();
+			  
 			  var markers = [];
 			<c:forEach items="${allmapinfo}" var="p">
 
@@ -72,6 +75,37 @@
 		            infoWindow.setContent(html);
 		            infoWindow.open(map, marker);
 		      });
+		        
+		        //test gps
+		        if (navigator.geolocation) {
+		            navigator.geolocation.getCurrentPosition(function(position) {
+		            var infoWindow = new google.maps.InfoWindow();
+		            var cont = "<p>"+"You are here"+"</p>";
+		              var pos = {
+		                lat: position.coords.latitude,
+		                lng: position.coords.longitude
+		              };
+		              
+		              markergps = new google.maps.Marker({
+				            position: pos,
+				            map:map
+				   		 });
+		              map.setCenter(pos);
+		              bindInfoWindow(markergps, map, infoWindow, cont);
+		            }, function() {
+		              handleLocationError(true, infoWindow, map.getCenter());
+		            });
+		          } else {
+		            // Browser doesn't support Geolocation
+		            handleLocationError(false, infoWindow, map.getCenter());
+		          }
+		        }
+
+		        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+		          infoWindow.setPosition(pos);
+		          infoWindow.setContent(browserHasGeolocation ?
+		                                'Error: The Geolocation service failed.' :
+		                                'Error: Your browser doesn\'t support geolocation.');
 		    }
 		</script>
 	<script async defer

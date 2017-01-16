@@ -96,11 +96,13 @@
 			<span>類</span>	
 		</div>
 			<div id="mwt_slider_content">
+			 <form>
 			  <ul>
-				  <span class="sp_span">活動</span>
-				  <span class="sp_span">建築</span>
-			 	  <span class="sp_span">生物</span><br>
+				  <span class="sp_span"><input type="checkbox" value="1" name="class_1">活動</span>
+				  <span class="sp_span"><input type="checkbox" value="2" name="class_2">建築</span>
+			 	  <span class="sp_span"><input type="checkbox" value="3" name="class_3">生物</span><br>
 			  </ul>
+			  <form>
 
 			    <div class="copyright">&copy;2016 - cultion</div>
 			</div>
