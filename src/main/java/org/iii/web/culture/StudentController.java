@@ -140,6 +140,21 @@ public class StudentController {
 		return model;
 
 	}
+	
+	@RequestMapping(value = { "culture/Receptionedit" }, method = RequestMethod.GET)
+	public ModelAndView editPage(HttpServletRequest request,
+			HttpServletResponse response) {
+		ModelAndView model = new ModelAndView();
+		String id = (String)request.getParameter("id");
+		System.out.println(id);
+		List<Map<String, Object>> ditailinfo= studentService.getditail(id);
+		model.addObject("ditailinfo", ditailinfo);
+
+	           
+		model.setViewName("culture/location_edit");
+		return model;
+
+	}
 
 
 }

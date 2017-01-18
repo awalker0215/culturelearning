@@ -16,6 +16,7 @@
 <body>
 <div class="top_div">
 	<a align="right" href="culture/login">【登入/註冊】</a>
+	<a align="right" href="/culture/addpage">【新增】</a>
 </div>
 <div class="container">
 			<div class="primary_header">

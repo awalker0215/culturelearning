@@ -15,9 +15,7 @@
 <!-- Main Container -->
 <div class="top_div">
 	<a align="right" href="/culture/login">【登入/註冊】</a>
-	<c:forEach items="${ditailinfo}" var="p">
-	<a align="right" href="/culture/Receptionedit?id=${p.l_id}">【修改】</a>
-	 </c:forEach>
+	<a align="right" href="/culture/delete">【刪除】</a>
 </div>
 <div class="container"> 
   <!-- Header -->
@@ -44,25 +42,25 @@
      	 	<tr>
 	        	<td width="50">類型：</td>
 	        	<c:forEach items="${ditailinfo}" var="p">
-		        <td><c:out value="${p.l_type}"/></td>
+		        <td><input type = "text" name = etype value = "${p.l_type}"></td>
 		   		 </c:forEach>
 	        </tr>
 	        <tr>
 	        	<td width="50">名稱：</td>
 	           <c:forEach items="${ditailinfo}" var="p">
-		        <td><c:out value="${p.l_name}"/></td>
+		        <td><input type = "text" name = ename value="${p.l_name}"></td>
 		   		 </c:forEach>
 	        </tr>
 	        <tr>
 	         <td width="50">位置：</td>
 	            <c:forEach items="${ditailinfo}" var="p">
-		        <td><c:out value="${p.l_xaxis},${p.l_yaxis}"/></td>
+		        <td><input type = "text" name = elocation value="${p.l_xaxis},${p.l_yaxis}"></td>
 		   		 </c:forEach>
 	        </tr>
 	        <tr>
 	        <td width="50">內容：</td>
 	        <c:forEach items="${ditailinfo}" var="p">
-		        <td><c:out value="${p.v_vaule}"/></td>
+		        <td><input type = "text" name = evalue value="${p.v_vaule}"></td>
 		   		 </c:forEach>
 	        </tr>
 		    
