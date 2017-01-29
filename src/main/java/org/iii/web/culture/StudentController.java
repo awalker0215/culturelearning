@@ -117,8 +117,9 @@ public class StudentController {
 		int age = (int)Integer.parseInt(request.getParameter("age"));
 		studentService.insertpro(username,password, sex, email, age, "1");
 		System.out.println("insert a user");
-		List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
-		model.addObject("allmapinfo", allmapinfo);
+		/*List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
+		model.addObject("allmapinfo", allmapinfo);*/
+		
 		/*List alluserinfo = studentService.getactiveinfo();
 		model.addObject("alluserinfo", alluserinfo);*/
 
@@ -141,20 +142,30 @@ public class StudentController {
 
 	}
 	
-	@RequestMapping(value = { "culture/Receptionedit" }, method = RequestMethod.GET)
-	public ModelAndView editPage(HttpServletRequest request,
+
+	@RequestMapping(value = "culture/addpoint", method = RequestMethod.POST)
+	public ModelAndView addpointPage(HttpServletRequest request,
 			HttpServletResponse response) {
+		
 		ModelAndView model = new ModelAndView();
-		String id = (String)request.getParameter("id");
-		System.out.println(id);
-		List<Map<String, Object>> ditailinfo= studentService.getditail(id);
-		model.addObject("ditailinfo", ditailinfo);
+		
+		String classtpye = (String)request.getParameter("class");
+		String classrname = (String)request.getParameter("classname");
+		String latx = (String)request.getParameter("inLatLngx");
+		String laty = (String)request.getParameter("inLatLngy");
+		String content = (String)request.getParameter("content");
+		//studentService.addpoint();
+		System.out.println(classtpye+" "+classrname+" "+latx+" "+laty+" "+content);
+		/*List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
+		model.addObject("allmapinfo", allmapinfo);*/
+		/*List alluserinfo = studentService.getactiveinfo();
+		model.addObject("alluserinfo", alluserinfo);*/
 
-	           
-		model.setViewName("culture/location_edit");
+		model.setViewName("../../index");
+		
 		return model;
-
-	}
+		
+		}
 
 
 }
