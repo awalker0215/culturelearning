@@ -1,6 +1,7 @@
 package org.iii.web.login;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -61,6 +62,12 @@ public class LoginService {
 
 		loginRepository.deleteUser(username);
 	
+	}
+	
+	public List getallmaprinfo() {
+		// TODO Auto-generated method stub
+		List<Map<String, Object>> allmapinfo = loginRepository.selectallmaps();
+		return allmapinfo;
 	}
 	
 }

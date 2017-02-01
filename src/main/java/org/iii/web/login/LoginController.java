@@ -53,7 +53,8 @@ public class LoginController {
 	            }
 	        }
 		}
-
+		List<Map<String, Object>> allmapinfo= loginService.getallmaprinfo();
+		model.addObject("allmapinfo", allmapinfo);
 		model.setViewName("../../index");
 		return model;
 

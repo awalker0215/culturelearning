@@ -32,6 +32,10 @@ public class StudentController {
 	@Resource(name = "StudentService")
 	StudentService studentService;
 	
+	
+	
+	
+	
 	@RequestMapping(value = "culture/login", method = RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout) {
@@ -117,14 +121,16 @@ public class StudentController {
 		int age = (int)Integer.parseInt(request.getParameter("age"));
 		studentService.insertpro(username,password, sex, email, age, "1");
 		System.out.println("insert a user");
+		List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
+		model.addObject("allmapinfo", allmapinfo);
 		/*List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
 		model.addObject("allmapinfo", allmapinfo);*/
 		
 		/*List alluserinfo = studentService.getactiveinfo();
 		model.addObject("alluserinfo", alluserinfo);*/
-
-		model.setViewName("../../index");
 		
+		model.setViewName("../../index");
+
 		return model;
 		
 		}
@@ -138,6 +144,7 @@ public class StudentController {
 		for(Map<String, Object> i:allmapinfo)
 			System.out.println(i);
 		model.setViewName("../../index");
+		
 		return model;
 
 	}
@@ -158,7 +165,8 @@ public class StudentController {
 		//studentService.addpoint();
 		System.out.println(classtype+" "+classname+" "+latx+" "+laty+" "+youtubeaddress+" "+content);
 		studentService.insertpoint(classtype,classname, latx, laty, youtubeaddress, content);
-		
+		List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
+		model.addObject("allmapinfo", allmapinfo);
 		/*List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
 		model.addObject("allmapinfo", allmapinfo);*/
 		/*List alluserinfo = studentService.getactiveinfo();
@@ -181,6 +189,4 @@ public class StudentController {
 		return model;
 
 	}
-
-
 }

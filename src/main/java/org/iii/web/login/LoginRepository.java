@@ -83,4 +83,13 @@ public class LoginRepository {
 
 	}
 	
+	public List selectallmaps() {
+		// TODO Auto-generated method stub
+
+			String sql = "SELECT * FROM laction";
+			List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql);
+			
+			return list;
+	}
+	
 }
