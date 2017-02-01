@@ -7,7 +7,16 @@ html, body {
 	padding: 0; 
 	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
 	background: #DFE9F3;
-
+	
+}
+.mybody{
+	height: 80%; 
+	margin-left: 5%; 
+	margin-right: 5%; 
+	padding: 0; 
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	background: #DFE9F3;
+	
 }
 /*map*/
 #map { 
@@ -85,7 +94,7 @@ html, body {
 /* Container */
 .container {
 	background-color: #cce6ff;
-	width: 100%;
+	width: auto;
 	height: auto;
 	margin-top: 50px;
 	margin-left: auto;
@@ -97,7 +106,7 @@ html, body {
 	padding-bottom: 0px;
 }
 .columns {
-	width: 25%;
+	width: 50%;
 	float: left;
 	font-family: "Source Sans Pro";
 	color: #002e4d;
@@ -116,6 +125,10 @@ html, body {
 	text-align: center;
 	color: #01B2D1;
 }
+label{
+	text-align: center;
+	color: #225477;
+}
 .container ul {
 	margin-top: 0%;
 	margin-right: auto;
@@ -126,6 +139,27 @@ html, body {
 	padding-bottom: 15px;
 	padding-left: 0px;
 	width: 100%;
+}
+.form-group input[type="checkbox"] {
+    display: none;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span {
+    width: 20px;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span:first-child {
+    display: none;
+}
+.form-group input[type="checkbox"] + .btn-group > label span:last-child {
+    display: inline-block;   
+}
+
+.form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+    display: inline-block;
+}
+.form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+    display: none;   
 }
 .left_article {
 	background-color: #F7F7F7;
@@ -230,9 +264,7 @@ html, body {
 	color: #FFFFFF;
 	text-transform: uppercase;
 	font-weight: lighter;
-	letter-spacing: 2px;
-	border-top-width: 2px;
-	width: 100%;
+	width: 81%;
 	position:absolute;
 	bottom:0;
 }
@@ -428,6 +460,9 @@ footer {
 
 /* Mobile */
 @media (max-width: 320px) {
+#map { 
+	height: 80%;
+}
 .logo {
 	width: 100%;
 	text-align: center;
@@ -489,6 +524,9 @@ footer {
 
 /* Small Tablets */
 @media (min-width: 321px)and (max-width: 767px) {
+#map { 
+	height: 80%;
+}
 .logo {
 	width: 100%;
 	text-align: center;
@@ -560,6 +598,9 @@ footer {
 
 /* Small Desktops */
 @media (min-width: 768px) and (max-width: 1096px) {
+#map { 
+	height: 100%;
+}
 .text_column {
 	width: 100%;
 }

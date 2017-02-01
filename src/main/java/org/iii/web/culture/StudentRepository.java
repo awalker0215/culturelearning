@@ -130,5 +130,12 @@ public class StudentRepository {
 		List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql);
 		return list;
 	}
+
+
+	public int insertpoint(String classtype, String classname, String latx, String laty, String youtubeaddress,
+			String content) {
+		String sql0 = "INSERT INTO  FROM profile ";
+		return 0;
+	}
 	
 }

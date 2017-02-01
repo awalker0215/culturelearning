@@ -22,7 +22,7 @@ if(confirm("Are you sure to delete it?"))
 <body>
 	<h1>Title : ${title}</h1>
 	<h1>Message : ${message}</h1>
-
+	
 	
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
 		<!-- For login user -->
@@ -52,7 +52,6 @@ if(confirm("Are you sure to delete it?"))
 		</table>
 		<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
-				
     </form>
     
 		<c:url value="/j_spring_security_logout" var="logoutUrl" />
@@ -76,7 +75,7 @@ if(confirm("Are you sure to delete it?"))
 
 
 	</sec:authorize>
-	
+
 	<sec:authorize access="hasRole('ROLE_USER') and !hasRole('ROLE_ADMIN')">
 		<!-- For login user -->
 		<h1>User : ${useremail}</h1>

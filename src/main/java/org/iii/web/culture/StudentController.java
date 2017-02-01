@@ -103,7 +103,7 @@ public class StudentController {
 	
 	
 
-	@RequestMapping(value = "culture/insert", method = RequestMethod.POST)
+	@RequestMapping(value = "culture/insertuser", method = RequestMethod.POST)
 	public ModelAndView insertPage(HttpServletRequest request,
 			HttpServletResponse response) {
 		
@@ -149,13 +149,16 @@ public class StudentController {
 		
 		ModelAndView model = new ModelAndView();
 		
-		String classtpye = (String)request.getParameter("class");
-		String classrname = (String)request.getParameter("classname");
+		String classtype = (String)request.getParameter("class");
+		String classname = (String)request.getParameter("classname");
 		String latx = (String)request.getParameter("inLatLngx");
 		String laty = (String)request.getParameter("inLatLngy");
+		String youtubeaddress = (String)request.getParameter("classVideo");
 		String content = (String)request.getParameter("content");
 		//studentService.addpoint();
-		System.out.println(classtpye+" "+classrname+" "+latx+" "+laty+" "+content);
+		System.out.println(classtype+" "+classname+" "+latx+" "+laty+" "+youtubeaddress+" "+content);
+		studentService.insertpoint(classtype,classname, latx, laty, youtubeaddress, content);
+		
 		/*List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
 		model.addObject("allmapinfo", allmapinfo);*/
 		/*List alluserinfo = studentService.getactiveinfo();
@@ -166,6 +169,18 @@ public class StudentController {
 		return model;
 		
 		}
+	
+	@RequestMapping(value = "culture/userdata", method = RequestMethod.GET)
+	public ModelAndView userPage(HttpServletRequest request,
+			HttpServletResponse response) {
+		
+		ModelAndView model = new ModelAndView();
+
+		model.setViewName("culture/user_data");
+		
+		return model;
+
+	}
 
 
 }

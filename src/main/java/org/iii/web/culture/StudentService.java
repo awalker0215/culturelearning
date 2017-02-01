@@ -60,6 +60,13 @@ public class StudentService {
 		return allditail;
 	}
 
+	public int insertpoint(String classtype, String classname, String latx, String laty, String youtubeaddress,
+			String content) {
+		int updateCount = studentRepository.insertpoint(classtype,classname,latx,laty,youtubeaddress,content);
+		return updateCount;
+		
+	}
+
 
 	
 }

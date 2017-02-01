@@ -34,7 +34,7 @@
 							<tr>
 								<td colspan="2"><input name="submit" type="submit"
 									value="登入" /></td>
-								<td colspan="2" ><a href="refirsted.html">註冊</a></td>
+								<td colspan="2" ><a href="/culture/refirsted">註冊</a></td>
 							</tr>
 						</table>
 						</table>

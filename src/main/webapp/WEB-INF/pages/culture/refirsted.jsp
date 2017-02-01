@@ -15,7 +15,7 @@
 	   </center> 
   <section class="left_article">   
 		<form name='registeredForm' 
-					action="insert" method="POST">
+					action="insertuser" method="POST">
 	
 			<table width="300px">
 				<tr>
