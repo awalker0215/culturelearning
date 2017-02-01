@@ -23,6 +23,16 @@
 </sec:authorize>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 	<a align="right" href="javascript:formSubmit()">【登出】</a>
+	<c:url value="/j_spring_security_logout" var="logoutUrl" />
+		<form action="${logoutUrl}" method="post" id="logoutForm">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+		</form>
+		<script>
+			function formSubmit() {
+				document.getElementById("logoutForm").submit();
+			}
+		</script>
 </sec:authorize>
 	<a align="right" href="/culture/userdata">【我的資料】</a>
 </div>
@@ -158,5 +168,6 @@
 	<script async defer
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0YHjxhTqUPSIQtCRRLPsKmYZ8NUmiX00&callback=initMap">
 		</script>
+		
   </body>
 </html>

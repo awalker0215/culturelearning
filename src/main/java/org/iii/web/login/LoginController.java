@@ -54,7 +54,7 @@ public class LoginController {
 	        }
 		}
 
-		model.setViewName("hello");
+		model.setViewName("../../index");
 		return model;
 
 	}
