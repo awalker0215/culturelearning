@@ -10,7 +10,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="/resources/css/reception.css" rel="stylesheet" type="text/css">
-<title>GoogleMap</title>
+<link rel="shortcut icon" href="/resources/pic/icon.ico"/>
+<title>文化學習</title>
 <style type="text/css"> </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -21,7 +22,7 @@
 <sec:authorize access="!hasRole('ROLE_USER') and !hasRole('ROLE_ADMIN')">
 	<a align="right" href="/culture/login">【登入/註冊】</a>
 </sec:authorize>
-<sec:authorize access="hasRole('ROLE_ADMIN')">
+<sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
 	<a align="right" href="javascript:formSubmit()">【登出】</a>
 	<c:url value="/j_spring_security_logout" var="logoutUrl" />
 		<form action="${logoutUrl}" method="post" id="logoutForm">
@@ -34,11 +35,11 @@
 			}
 		</script>
 </sec:authorize>
-	<a align="right" href="/culture/userdata">【我的資料】</a>
+	<a align="right" href="/culture/userdata?username=${username}">【${username}的資料】</a>
 </div>
 <div class="container">
 		<div class="primary_header">
-			<h1 class="title">首頁</h1>
+			<h1 class="title">文化地圖</h1>
 		</div>	
 		<div height=30px>
 			<form>
@@ -119,7 +120,7 @@
 			    });
 			  markers.push(marker);	
 			  
-			  var html = "<a href="+"culture/Reception?id="+"${p.l_id}"+">"+"<p>"+"名稱：" + "${p.l_name}"+"</p>"+"</a>";
+			  var html = "<a href="+"/culture/Reception?id="+"${p.l_id}"+">"+"<p>"+"名稱：" + "${p.l_name}"+"</p>"+"</a>";
 	          var dital = "${p.l_id}";
 			  //html = html +"<p>地點：" + dataPhoto.position +"</p>";
 	          //html = html +"<p>種類：" + dataPhoto.type +"</p>";

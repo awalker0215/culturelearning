@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -69,15 +70,18 @@ public class StudentController {
 
 	}
 	
-	@RequestMapping(value = { "culture/Receptiontest" }, method = RequestMethod.GET)
-	public ModelAndView defaultPagetest() {
+	@RequestMapping(value = { "culture/locationedit" }, method = RequestMethod.GET)
+	public ModelAndView defaultPagetest(HttpServletRequest request,
+			HttpServletResponse response) {
 
 		ModelAndView model = new ModelAndView();
-		System.out.println("test");
 		/*List getactiveinfo = studentService.getactiveinfo();
 		model.addObject("getactiveinfo", getactiveinfo);*/
-	           
-		model.setViewName("culture/Reception");
+		/*String id = (String)request.getParameter("id");
+		System.out.println(id);
+		List<Map<String, Object>> ditailinfo= studentService.getditail(id);
+		model.addObject("ditailinfo", ditailinfo);*/
+		model.setViewName("culture/location_edit");
 		return model;
 
 	}
@@ -86,6 +90,27 @@ public class StudentController {
 	public ModelAndView addPage(HttpServletRequest request,
 			HttpServletResponse response) {
 		ModelAndView model = new ModelAndView();
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			UserDetails userDetail = (UserDetails) auth.getPrincipal();
+			for (GrantedAuthority authority : userDetail.getAuthorities()) {
+	            if (authority.getAuthority().equals("ROLE_USER"))
+	            {
+	            	String username = userDetail.getUsername();
+	    			/*List alluserinfo = studentService.getmaprinfo(username);
+	    			model.addObject("alluserinfo", alluserinfo);*/
+	            	model.addObject("username", username.toString());
+	            }
+	            else
+	            {
+	            	String username = userDetail.getUsername();
+	    			//String useremail = studentService.getUserEmail(username);
+	    			//model.addObject("useremail", );
+	            	model.addObject("username", username.toString());
+	            }
+	        }
+		}
 	           
 		model.setViewName("culture/user_edit");
 		return model;
@@ -141,8 +166,28 @@ public class StudentController {
 
 		List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
 		model.addObject("allmapinfo", allmapinfo);
-		for(Map<String, Object> i:allmapinfo)
-			System.out.println(i);
+		/*for(Map<String, Object> i:allmapinfo)
+			System.out.println(i);*/
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			UserDetails userDetail = (UserDetails) auth.getPrincipal();
+			for (GrantedAuthority authority : userDetail.getAuthorities()) {
+	            if (authority.getAuthority().equals("ROLE_USER"))
+	            {
+	            	String username = userDetail.getUsername();
+	    			/*List alluserinfo = studentService.getmaprinfo(username);
+	    			model.addObject("alluserinfo", alluserinfo);*/
+	            	model.addObject("username", username.toString());
+	            }
+	            else
+	            {
+	            	String username = userDetail.getUsername();
+	    			//String useremail = studentService.getUserEmail(username);
+	    			//model.addObject("useremail", );
+	            	model.addObject("username", username.toString());
+	            }
+	        }
+		}
 		model.setViewName("../../index");
 		
 		return model;
@@ -183,6 +228,31 @@ public class StudentController {
 			HttpServletResponse response) {
 		
 		ModelAndView model = new ModelAndView();
+		String ownername = (String)request.getParameter("username");
+		List<Map<String, Object>> mapinfo= studentService.getmapinfo(ownername);
+		/*for(Map<String, Object> i:mapinfo)
+			System.out.println(i);*/
+		model.addObject("mapinfo", mapinfo);
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			UserDetails userDetail = (UserDetails) auth.getPrincipal();
+			for (GrantedAuthority authority : userDetail.getAuthorities()) {
+	            if (authority.getAuthority().equals("ROLE_USER"))
+	            {
+	            	String username = userDetail.getUsername();
+	    			/*List alluserinfo = studentService.getmaprinfo(username);
+	    			model.addObject("alluserinfo", alluserinfo);*/
+	            	model.addObject("username", username.toString());
+	            }
+	            else
+	            {
+	            	String username = userDetail.getUsername();
+	    			//String useremail = studentService.getUserEmail(username);
+	    			//model.addObject("useremail", );
+	            	model.addObject("username", username.toString());
+	            }
+	        }
+		}
 
 		model.setViewName("culture/user_data");
 		

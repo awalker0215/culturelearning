@@ -36,8 +36,27 @@
 		});
 		map.addListener('click', function(e) {
 			getLatLng(e.latLng, map);
+
 		});
+
+		var infoWindow_marker = new google.maps.InfoWindow();
+
+		var markers = [];
+		<c:forEach items="${mapinfo}" var="p">
+
+		latLng = new google.maps.LatLng("${p.l_xaxis}", "${p.l_yaxis}");
+		marker = new google.maps.Marker({
+			position : latLng,
+			map : map
+		});
+		markers.push(marker);
+
+		var html = "<a href=" + "locationedit?id=" + "${p.l_id}" + ">" + "<p>"+ "名稱：" + "${p.l_name}" + "</p>" + "</a>";
+		var dital = "${p.l_id}";
+		bindInfoWindow(marker, map, infoWindow_marker, html);
+		</c:forEach>
 	}
+
 	function setMapOnAll(map) {
 		for (var i = 0; i < markers.length; i++) {
 			markers[i].setMap(map);
@@ -51,8 +70,21 @@
 			map : map
 		});
 		markers.push(marker);
-		document.getElementById("Lat").value = latLng.lat();
-		document.getElementById("Lng").value = latLng.lng();
+		//document.getElementById("Lat").value = latLng.lat();
+		//document.getElementById("Lng").value = latLng.lng();
+		var con = "<a href="+"addpage"+">" + "<p>" + "新增地點" + "</p>" + "</a>";
+		var infoWindow_markerc = new google.maps.InfoWindow();
+		bindInfoWindow(marker, map, infoWindow_markerc, con);
+
+	}
+
+	function bindInfoWindow(marker, map, infoWindow, html) {
+		// 除了 click 事件，也可以用 mouseover 等事件觸發氣泡框顯示
+		google.maps.event.addListener(marker, 'click', function() {
+			infoWindow.setContent(html);
+			infoWindow.open(map, marker);
+		});
+
 	}
 </script>
 </head>
@@ -65,7 +97,15 @@
 			</div>
 		</header>
 		<section id="offer">
-			<h2>Hi, name!</h2> <!-- 逗點後面要加上使用者的名稱 --><!-- 逗點後面要加上使用者的名稱 --><!-- 逗點後面要加上使用者的名稱 --><!-- 逗點後面要加上使用者的名稱 --><!-- 逗點後面要加上使用者的名稱 --><!-- 逗點後面要加上使用者的名稱 --><!-- 逗點後面要加上使用者的名稱 --><!-- 逗點後面要加上使用者的名稱 -->
+			<h2>Hi, ${username}</h2>
+			<!-- 逗點後面要加上使用者的名稱 -->
+			<!-- 逗點後面要加上使用者的名稱 -->
+			<!-- 逗點後面要加上使用者的名稱 -->
+			<!-- 逗點後面要加上使用者的名稱 -->
+			<!-- 逗點後面要加上使用者的名稱 -->
+			<!-- 逗點後面要加上使用者的名稱 -->
+			<!-- 逗點後面要加上使用者的名稱 -->
+			<!-- 逗點後面要加上使用者的名稱 -->
 		</section>
 		<div id="content">
 
@@ -74,36 +114,37 @@
 					<form name="addlocationForm" action="addpoint" method="POST">
 						<table width="100%" border="0">
 							<tr>
-									<td>
-										  <h3 id="class_ activity">
-												<input type="radio" name="class" value="activty"> 活動
-											</h3>
-											<hr>	
-									</td>
-									<td>
-										<h3>
-												<input type="radio" name="class" value="build"> 建築
-											</h3>
-											<hr>
-									</td>
-									<td>
-										<h3>
-												<input type="radio" name="class" value="animal"> 生物
-											</h3>
-											<hr>
-									</td>
-								</tr>
+								<td>
+									<h3 id="class_ activity">
+										<input type="radio" name="class" value="activty"> 活動
+									</h3>
+									<hr>
+								</td>
+								<td>
+									<h3>
+										<input type="radio" name="class" value="build"> 建築
+									</h3>
+									<hr>
+								</td>
+								<td>
+									<h3>
+										<input type="radio" name="class" value="animal"> 生物
+									</h3>
+									<hr>
+								</td>
+							</tr>
 							<tr>
 								<td colspan="3">
-								<div id="my_map"
-									style="width: 100%; height: 300px; position: relative; overflow: hidden;"></div></td>
-									<!--地圖說明 -->
-									<!-- 使用者可以透過篩選器來查看可以編輯的點(類似index的寫法，只是氣球裡面要多一個"編輯"的link連接到編輯頁面)，但若使用者點到的點是未有資料的點，會跳出氣球顯示"新增"的link連接到空白的編輯頁面，但新增那張地圖的定位中心要在剛剛使用者點下的那個座標點(這個我不確定是否可以做到，但是這是目前我想到最好的方法) -->
+									<div id="my_map"
+										style="width: 100%; height: 300px; position: relative; overflow: hidden;"></div>
+								</td>
+								<!--地圖說明 -->
+								<!-- 使用者可以透過篩選器來查看可以編輯的點(類似index的寫法，只是氣球裡面要多一個"編輯"的link連接到編輯頁面)，但若使用者點到的點是未有資料的點，會跳出氣球顯示"新增"的link連接到空白的編輯頁面，但新增那張地圖的定位中心要在剛剛使用者點下的那個座標點(這個我不確定是否可以做到，但是這是目前我想到最好的方法) -->
 							</tr>
-							
+
 						</table>
-						<td>
-						 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /></td>
+						<td><input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" /></td>
 					</form>
 				</div>
 			</section>

@@ -11,7 +11,7 @@
 <title>文化學習 細部說明</title>
 <link href="/resources/css/reception.css" rel="stylesheet" type="text/css">
 </head>
-<body class="mybody">
+<body>
 <!-- Main Container -->
 <div class="top_div">
 	<a align="left" href="/">【首頁】</a>
@@ -22,7 +22,7 @@
 	<a align="right" href="/culture/Receptionedit?id=${p.l_id}">【修改】</a>
 	 </c:forEach>-->
 </div>
-<div class="my_container"> 
+<div class="container"> 
   <!-- Header -->
   <header class="primary_header">
     <h1 class="title">細部說明</h1>
@@ -43,8 +43,12 @@
       </c:forEach>
     <div class="right_article">
       <table class="table">
-      	<div style="height:50%; width:100%" id="map"></div>
         <tbody>
+        <tr>
+        <td colspan="2">
+        <div style="height:180; width:242%" id="map"></div>
+        </td>
+        </tr>
      	 	<tr>
 	        	<td width="50">類型：</td>
 	        	<c:forEach items="${ditailinfo}" var="p">
@@ -111,7 +115,7 @@
 			  var infoWindow_marker = new google.maps.InfoWindow();
 			  
 			  var markers = [];
-			<c:forEach items="${ditailinfo}" var="p">
+			<c:forEach items="${allmapinfo}" var="p">
 
 			  latLng = new google.maps.LatLng("${p.l_xaxis}", "${p.l_yaxis}");
 			  marker = new google.maps.Marker({
@@ -119,7 +123,11 @@
 			            map:map
 			    });
 			  markers.push(marker);	
-			  map.setCenter(latLng)
+			  
+			  var html = "<a href="+"culture/Reception?id="+"${p.l_id}"+">"+"<p>"+"名稱：" + "${p.l_name}"+"</p>"+"</a>";
+	          var dital = "${p.l_id}";
+			  //html = html +"<p>地點：" + dataPhoto.position +"</p>";
+	          //html = html +"<p>種類：" + dataPhoto.type +"</p>";
 	          bindInfoWindow(marker, map, infoWindow_marker, html); 
 			</c:forEach>
 			}

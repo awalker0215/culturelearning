@@ -67,6 +67,11 @@ public class StudentService {
 		
 	}
 
+	public List getmapinfo(String username) {
+		List<Map<String, Object>> mapinfo = studentRepository.selectmaps(username);
+		return mapinfo;
+	}
+
 
 	
 }

@@ -11,25 +11,20 @@
 <title>文化學習 細部說明</title>
 <link href="/resources/css/reception.css" rel="stylesheet" type="text/css">
 </head>
-<body class="mybody">
+<body>
 <!-- Main Container -->
 <div class="top_div">
-	<a align="left" href="/">【首頁】</a>
-	<sec:authorize access="!hasRole('ROLE_USER') and !hasRole('ROLE_ADMIN')">
 	<a align="right" href="/culture/login">【登入/註冊】</a>
-	</sec:authorize>
-	<!--<c:forEach items="${ditailinfo}" var="p">
-	<a align="right" href="/culture/Receptionedit?id=${p.l_id}">【修改】</a>
-	 </c:forEach>-->
+	<a align="right" href="/culture/delete">【刪除】</a>
 </div>
-<div class="my_container"> 
+<div class="container"> 
   <!-- Header -->
   <header class="primary_header">
     <h1 class="title">細部說明</h1>
   </header>
   <!-- Hero Section -->
   <section class="intro">
-    <div class="column" >
+    <div class="column">
       <!--h3>JOHN DOE</h3>-->
       <c:forEach items="${ditailinfo}" var="p">
       	<c:choose>
@@ -43,30 +38,29 @@
       </c:forEach>
     <div class="right_article">
       <table class="table">
-      	<div style="height:50%; width:100%" id="map"></div>
         <tbody>
      	 	<tr>
 	        	<td width="50">類型：</td>
 	        	<c:forEach items="${ditailinfo}" var="p">
-		        <td><c:out value="${p.l_type}"/></td>
+		        <td><input type = "text" name = etype value = "${p.l_type}"></td>
 		   		 </c:forEach>
 	        </tr>
 	        <tr>
 	        	<td width="50">名稱：</td>
 	           <c:forEach items="${ditailinfo}" var="p">
-		        <td><c:out value="${p.l_name}"/></td>
+		        <td><input type = "text" name = ename value="${p.l_name}"></td>
 		   		 </c:forEach>
 	        </tr>
 	        <tr>
 	         <td width="50">位置：</td>
 	            <c:forEach items="${ditailinfo}" var="p">
-		        <td><c:out value="${p.l_xaxis},${p.l_yaxis}"/></td>
+		        <td><input type = "text" name = elocation value="${p.l_xaxis},${p.l_yaxis}"></td>
 		   		 </c:forEach>
 	        </tr>
 	        <tr>
 	        <td width="50">內容：</td>
 	        <c:forEach items="${ditailinfo}" var="p">
-		        <td><c:out value="${p.v_vaule}"/></td>
+		        <td><input type = "text" name = evalue value="${p.v_vaule}"></td>
 		   		 </c:forEach>
 	        </tr>
 		    
@@ -93,79 +87,27 @@
       <h4>TITLE</h4>
       <p class="tag">HTML, CSS, JS, WordPress</p>
 </div>
-  </div>
-  <div class="copyright">Production team &copy; All Force</div> 
+  </div> 
 </div>
 <!-- Main Container Ends -->
-		
-<script type="text/javascript">
-				//地圖
-			var map;
-			var sign = [];
-			var index = 0;
-			function initMap() {
-			  map = new google.maps.Map(document.getElementById('map'), {
-				center: {lat: 23.577760, lng: 119.577125},
-				zoom: 16
-			  });
-			  var infoWindow_marker = new google.maps.InfoWindow();
-			  
-			  var markers = [];
-			<c:forEach items="${ditailinfo}" var="p">
+		<div id="mwt_mwt_slider_scroll">
+		<div id="mwt_fb_tab">
+			<span>分</span>
+			<span>類</span>	
+		</div>
+			<div id="mwt_slider_content">
+			 <form>
+			  <ul>
+				  <span class="sp_span"><input type="checkbox" value="1" name="class_1">活動</span>
+				  <span class="sp_span"><input type="checkbox" value="2" name="class_2">建築</span>
+			 	  <span class="sp_span"><input type="checkbox" value="3" name="class_3">生物</span><br>
+			  </ul>
+			  <form>
 
-			  latLng = new google.maps.LatLng("${p.l_xaxis}", "${p.l_yaxis}");
-			  marker = new google.maps.Marker({
-			            position: latLng,
-			            map:map
-			    });
-			  markers.push(marker);	
-			  map.setCenter(latLng)
-	          bindInfoWindow(marker, map, infoWindow_marker, html); 
-			</c:forEach>
-			}
-			function bindInfoWindow(marker, map, infoWindow, html) {
-		        // 除了 click 事件，也可以用 mouseover 等事件觸發氣泡框顯示
-		        google.maps.event.addListener(marker, 'click', function() { 
-		            infoWindow.setContent(html);
-		            infoWindow.open(map, marker);
-		      });
-		        
-		        //test gps
-		        if (navigator.geolocation) {
-		            navigator.geolocation.getCurrentPosition(function(position) {
-		            var infoWindow = new google.maps.InfoWindow();
-		            var cont = "<p>"+"You are here"+"</p>";
-		              var pos = {
-		                lat: position.coords.latitude,
-		                lng: position.coords.longitude
-		              };
-		              
-		              markergps = new google.maps.Marker({
-				            position: pos,
-				            map:map
-				   		 });
-		              map.setCenter(pos);
-		              bindInfoWindow(markergps, map, infoWindow, cont);
-		            }, function() {
-		              handleLocationError(true, infoWindow, map.getCenter());
-		            });
-		          } else {
-		            // Browser doesn't support Geolocation
-		            handleLocationError(false, infoWindow, map.getCenter());
-		          }
-		        }
+			    <div class="copyright">&copy;2016 - cultion</div>
+			</div>
+		</div>
 
-		        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-		          infoWindow.setPosition(pos);
-		          infoWindow.setContent(browserHasGeolocation ?
-		                                'Error: The Geolocation service failed.' :
-		                                'Error: Your browser doesn\'t support geolocation.');
-		    }
-				</script>
-				<script async defer
-						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0YHjxhTqUPSIQtCRRLPsKmYZ8NUmiX00&callback=initMap">
-					</script>
-		</script>
 	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript">
 			$(function(){

@@ -126,8 +126,8 @@ public class StudentRepository {
 
 
 	public List<Map<String, Object>> selectallditails(String id) {
-		String sql = "SELECT * FROM details where l_id="+id;
-		List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql);
+		String sql = "SELECT * FROM details where l_id=?";
+		List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql,id);
 		return list;
 	}
 
@@ -136,6 +136,14 @@ public class StudentRepository {
 			String content) {
 		String sql0 = "INSERT INTO  FROM profile ";
 		return 0;
+	}
+
+
+	public List<Map<String, Object>> selectmaps(String username) {
+		String sql = "SELECT l_id,l_name,l_xaxis,l_yaxis,a_id FROM laction where username = ? ";
+		List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql,username);
+		
+		return list;
 	}
 	
 	
