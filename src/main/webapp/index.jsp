@@ -34,8 +34,9 @@
 				document.getElementById("logoutForm").submit();
 			}
 		</script>
+		<a align="right" href="/culture/userdata?username=${username}">【${username}的資料】</a>
 </sec:authorize>
-	<a align="right" href="/culture/userdata?username=${username}">【${username}的資料】</a>
+	
 </div>
 <div class="container">
 		<div class="primary_header">

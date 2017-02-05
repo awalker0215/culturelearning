@@ -32,9 +32,9 @@
 								<td colspan="2"><input type="password" name="password" /></td>
 							</tr>
 							<tr>
-								<td colspan="2"><input name="submit" type="submit"
-									value="登入" /></td>
+								<td colspan="2"><input name="submit" type="submit" value="登入" /></td>
 								<td colspan="2" ><a href="/culture/refirsted">註冊</a></td>
+								<td colspan="2" ><a href="/">首頁</a></td>
 							</tr>
 						</table>
 						</table>
