@@ -10,36 +10,94 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="/resources/css/reception.css" rel="stylesheet" type="text/css">
-<title>GoogleMap</title>
+<link rel="shortcut icon" href="/resources/pic/icon.ico"/>
+<title>文化學習</title>
 <style type="text/css"> </style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body class="mybody">
 <div class="top_div">
-	<a align="right" href="culture/login">【登入/註冊】</a>
-	<a align="right" href="/culture/addpage">【新增】</a>
+<sec:authorize access="!hasRole('ROLE_USER') and !hasRole('ROLE_ADMIN')">
+	<a align="right" href="/culture/login">【登入/註冊】</a>
+</sec:authorize>
+<sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
+	<a align="right" href="javascript:formSubmit()">【登出】</a>
+	<c:url value="/j_spring_security_logout" var="logoutUrl" />
+		<form action="${logoutUrl}" method="post" id="logoutForm">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+		</form>
+		<script>
+			function formSubmit() {
+				document.getElementById("logoutForm").submit();
+			}
+		</script>
+		<a align="right" href="/culture/userdata?username=${username}">【${username}的資料】</a>
+</sec:authorize>
+	
 </div>
 <div class="container">
-			<div class="primary_header">
-			  <h1 class="title">首頁</h1>
-			</div>
+		<div class="primary_header">
+			<h1 class="title">文化地圖</h1>
+		</div>	
+		<div height=30px>
+			<form>
+			  <table width="100%" border="0" cellpadding="1">
+				  <tbody>
+					<tr>
+					  <td align="center" valign="center">
+					 
+					  	  <div class="[ form-group ]">
+			           <input type="checkbox" value="1" name="class_1" id="fancy-checkbox-activity" autocomplete="off" />
+			            <div class="[ btn-group ]">
+			                <label for="fancy-checkbox-activity" class="[ btn btn-primary ]">
+			                    <span class="[ glyphicon glyphicon-ok ]"></span>
+			                    <span> </span>
+			                </label>
+			                <label for="fancy-checkbox-activity" class="[ btn btn-default active ]">
+			                 	   活動
+			                </label>
+			            </div>
+			           
+			        </div>
+					  </td>
+					  <td align="center" valign="center">
+					  	                <div class="[ form-group ]">
+				           <input type="checkbox" value="2" name="class_2" id="fancy-checkbox-build" autocomplete="off" />
+				            <div class="[ btn-group ]">
+				                <label for="fancy-checkbox-build" class="[ btn btn-primary ]">
+				                    <span class="[ glyphicon glyphicon-ok ]"></span>
+				                    <span> </span>
+				                </label>
+				                <label for="fancy-checkbox-build" class="[ btn btn-default active ]">
+				                 	   建築
+				                </label>
+				            </div>
+				        </div>
+					  </td>
+					  <td align="center" valign="center">
+					  	 <div class="[ form-group ]">
+			           <input type="checkbox" value="3" name="class_3" id="fancy-checkbox-animal" autocomplete="off" />
+			            <div class="[ btn-group ]">
+			                <label for="fancy-checkbox-animal" class="[ btn btn-primary ]">
+			                    <span class="[ glyphicon glyphicon-ok ]"></span>
+			                    <span> </span>
+			                </label>
+			                <label for="fancy-checkbox-animal" class="[ btn btn-default active ]">
+			                 	   生物
+			                </label>
+			            </div>
+			        </div>
+					  </td>
+					</tr>
+				  </tbody>
+				</table>
+			</form>
 		</div>
 		<div id="map"></div>
-		
-		<div id="mwt_mwt_slider_scroll">
-		<div id="mwt_fb_tab">
-			<span>分</span>
-			<span>類</span>	
-		</div>
-			<div id="mwt_slider_content">
-			<form>
-			  <ul>
-				  <span class="sp_span"><input type="checkbox" value="1" name="class_1">活動</span>
-				  <span class="sp_span"><input type="checkbox" value="2" name="class_2">建築</span>
-			 	  <span class="sp_span"><input type="checkbox" value="3" name="class_3">生物</span><br>
-			  </ul>
-			  <form>
-			    <div class="copyright">&copy;2016 - culture</div>
-			</div>
+			<div class="copyright">Production team &copy; All Force</div>
 		</div>
 <script type="text/javascript">
 				//地圖
@@ -63,7 +121,7 @@
 			    });
 			  markers.push(marker);	
 			  
-			  var html = "<a href="+"culture/Reception?id="+"${p.l_id}"+">"+"<p>"+"名稱：" + "${p.l_name}"+"</p>"+"</a>";
+			  var html = "<a href="+"/culture/Reception?id="+"${p.l_id}"+">"+"<p>"+"名稱：" + "${p.l_name}"+"</p>"+"</a>";
 	          var dital = "${p.l_id}";
 			  //html = html +"<p>地點：" + dataPhoto.position +"</p>";
 	          //html = html +"<p>種類：" + dataPhoto.type +"</p>";
@@ -112,25 +170,6 @@
 	<script async defer
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0YHjxhTqUPSIQtCRRLPsKmYZ8NUmiX00&callback=initMap">
 		</script>
-
-	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript">
-			$(function(){
-				var w = $("#mwt_slider_content").width();
-				$('#mwt_slider_content').css('height', ($(window).height() - 20) + 'px' ); //將區塊自動撐滿畫面高度
-
-				$("#mwt_fb_tab").mouseover(function(){ //滑鼠滑入時
-					if ($("#mwt_mwt_slider_scroll").css('left') == '-'+w+'px')
-					{
-						$("#mwt_mwt_slider_scroll").animate({ left:'0px' }, 400 ,'swing');
-					}
-				});
-
-
-				$("#mwt_slider_content").mouseleave(function(){　//滑鼠離開後
-					$("#mwt_mwt_slider_scroll").animate( { left:'-'+w+'px' }, 400 ,'swing');	
-				});	
-			});
-		</script>
+		
   </body>
 </html>

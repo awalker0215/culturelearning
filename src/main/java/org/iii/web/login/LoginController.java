@@ -36,7 +36,7 @@ public class LoginController {
 		model.addObject("title", "Spring Security Login Form - Database Authentication");
 		model.addObject("message", "This is default page!!!");
 		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		/*Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();
 			for (GrantedAuthority authority : userDetail.getAuthorities()) {
@@ -52,9 +52,30 @@ public class LoginController {
 	    			model.addObject("useremail", useremail);
 	            }
 	        }
+		}*/
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			UserDetails userDetail = (UserDetails) auth.getPrincipal();
+			for (GrantedAuthority authority : userDetail.getAuthorities()) {
+	            if (authority.getAuthority().equals("ROLE_USER"))
+	            {
+	            	String username = userDetail.getUsername();
+	    			/*List alluserinfo = studentService.getmaprinfo(username);
+	    			model.addObject("alluserinfo", alluserinfo);*/
+	            	model.addObject("username", username.toString());
+	            }
+	            else
+	            {
+	            	String username = userDetail.getUsername();
+	    			//String useremail = studentService.getUserEmail(username);
+	    			//model.addObject("useremail", );
+	            	model.addObject("username", username.toString());
+	            }
+	        }
 		}
 		List<Map<String, Object>> allmapinfo= loginService.getallmaprinfo();
 		model.addObject("allmapinfo", allmapinfo);
+		model.addObject("address", "culture/");
 		model.setViewName("../../index");
 		return model;
 

@@ -1,23 +1,22 @@
 @charset "UTF-8";
-@import "compass/css3";
 /* Body */
 html, body { 
 	height: 80%; 
 	margin-left: 5%; 
 	margin-right: 5%; 
-	padding: 0px; 
-	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
-	background: #cce6ff;
-	width: 90%;
-}
-.mybody{
-	height: 80%;
-	width: 100%; 
-	margin-left: 0px; 
-	margin-right: 0px; 
-	padding: 0px; 
+	padding: 0; 
 	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
 	background: #DFE9F3;
+	
+}
+.mybody{
+	height: 80%; 
+	margin-left: 5%; 
+	margin-right: 5%; 
+	padding: 0; 
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	background: #DFE9F3;
+	
 }
 /*map*/
 #map { 
@@ -92,18 +91,22 @@ html, body {
 
 
 
-/* my_container */
-.my_container {
-	background-color: #fff;
-	width: 100%;
+/* Container */
+.container {
+	background-color: #cce6ff;
+	width: auto;
 	height: auto;
 	margin-top: 50px;
 	margin-left: auto;
 	margin-right: auto;
 	border-bottom-width: 0px;
-	padding: 0px;
+	padding-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
 }
 .columns {
+	width: 50%;
 	float: left;
 	font-family: "Source Sans Pro";
 	color: #002e4d;
@@ -118,7 +121,7 @@ html, body {
 	margin-left: 0px;
 	margin-right: 0px;
 }
-.my_container .columns h4 {
+.container .columns h4 {
 	text-align: center;
 	color: #01B2D1;
 }
@@ -126,7 +129,7 @@ label{
 	text-align: center;
 	color: #225477;
 }
-.my_container ul {
+.container ul {
 	margin-top: 0%;
 	margin-right: auto;
 	margin-bottom: 0px;
@@ -158,36 +161,6 @@ label{
 .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
     display: none;   
 }
-
-.slideOne {
-  width: 50px;
-  height: 10px;
-  background: #333;
-  margin: 20px auto;
-  position: relative;
-  border-radius: 50px;
-  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
-  label {
-    display: block;
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    cursor: pointer;
-    background: #fcfff4;
-    background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-    border-radius: 50px;
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s ease;
-  }
-  input[type=checkbox] {
-    visibility: hidden;
-    &:checked + label {
-      left: 37px;
-    }  
-  }
-}
 .left_article {
 	background-color: #F7F7F7;
 	width: 50%;
@@ -201,7 +174,7 @@ label{
 	display: none;
 	height: 80%;
 }
-.my_container .left_article h3 {
+.container .left_article h3 {
 	padding-left: 5%;
 	padding-right: 5%;
 	margin-top: 5%;
@@ -209,7 +182,7 @@ label{
 	font-weight: bold;
 	text-transform: uppercase;
 }
-.my_container .left_article p {
+.container .left_article p {
 	padding-left: 8%;
 	padding-right: 8%;
 	text-align: justify;
@@ -222,11 +195,7 @@ label{
 	width: 50%;
 	height:auto;
 	float: left;
-
-}
-.right_article td{
-	font-color: #003333;
-
+	background-color: #cce6ff;
 }
 
 .right_iframe{
@@ -238,7 +207,7 @@ label{
 	color: #343434;
 
 }
-.my_container .right_article ul {
+.container .right_article ul {
 	margin-top: 0px;
 	margin-right: 0px;
 	margin-bottom: 0px;
@@ -282,7 +251,7 @@ label{
 	width: auto;
 	height: 20%;
 }
-.my_container h2 {
+.container h2 {
 	color: #FFFFFF;
 	font-family: "Source Sans Pro";
 	text-align: center;
@@ -291,16 +260,13 @@ label{
 	text-align: center;
 	padding-top: 20px;
 	padding-bottom: 3%;
-	padding-left: 0px;
-	padding-right: 0px;
 	background-color: #717070;
 	color: #FFFFFF;
 	text-transform: uppercase;
 	font-weight: lighter;
-	width: 90%;
-	position:fixed;
-	bottom: 0px;
-	
+	width: 81%;
+	position:absolute;
+	bottom:0;
 }
 /* Header */
 header {
@@ -313,7 +279,6 @@ header {
 }
 .top_div{
 	margin-top: 15px;
-	margin-bottom: 10px;
 	padding-right: 30px;
 	position:absolute;
 	top: 0;
@@ -321,11 +286,11 @@ header {
 }
 .primary_header {
 	width: 100%;
-	background: #29658F;
+	background-color: #29658F;
 	padding-top: 5px;
 	padding-bottom: 10px;
-	margin-top: 15px;
-	border-bottom: 0px solid #2C9AB7;
+
+	border-bottom: 2px solid #2C9AB7;
 }
 .logo {
 	color: #fff;
@@ -360,9 +325,9 @@ header {
 	display: inline-block;
 	width: 100%;
 	background-color: #FFFFFF;
-	 [disabled]min-width: 400px;
-
-	padding-bottom: 8%;
+	/* [disabled]min-width: 400px;
+*/
+	padding-bottom: 35px;
 	padding-top: 0px;
 	margin-top: -5px;
 	margin-bottom: 0px;
@@ -397,12 +362,15 @@ header {
 /* More info */
 .intro {
 	background-color: #FFFFFF;
+	padding-bottom: 35px;
 }
 .column {
 	width: 50%;
 	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+
 	float: left;
-	
 }
 .column_right {
 	width: 50%;
@@ -479,8 +447,7 @@ footer {
 	background-color: #6DC7D0;
 }
 .profile {
-	width: 100%;
-	
+	width: 50%;
 }
 .gallery .thumbnail .tag {
 	color: #5D5E5D;
@@ -494,7 +461,7 @@ footer {
 /* Mobile */
 @media (max-width: 320px) {
 #map { 
-	height: 100%;
+	height: 80%;
 }
 .logo {
 	width: 100%;
@@ -529,7 +496,7 @@ footer {
 	line-height: 22px;
 	text-align: center;
 }
-.my_container ul {
+.container ul {
 	margin-top: 0px;
 	margin-right: 0px;
 	margin-bottom: 0px;
@@ -550,7 +517,7 @@ footer {
 	width: 100%;
 	height: auto;
 }
-.my_container .left_article h3 {
+.container .left_article h3 {
 	margin-top: 30px;
 }
 }
@@ -558,7 +525,7 @@ footer {
 /* Small Tablets */
 @media (min-width: 321px)and (max-width: 767px) {
 #map { 
-	height: 100%;
+	height: 80%;
 }
 .logo {
 	width: 100%;
@@ -601,7 +568,7 @@ footer {
 	text-align: center;
 	padding-left: 0px;
 }
-	.my_container ul {
+	.container ul {
 	margin-top: 0px;
 	margin-right: 0px;
 	margin-bottom: 0px;

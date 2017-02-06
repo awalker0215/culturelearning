@@ -148,11 +148,8 @@ public class StudentController {
 		System.out.println("insert a user");
 		List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
 		model.addObject("allmapinfo", allmapinfo);
-		/*List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
-		model.addObject("allmapinfo", allmapinfo);*/
-		
-		/*List alluserinfo = studentService.getactiveinfo();
-		model.addObject("alluserinfo", alluserinfo);*/
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		model.addObject("address", "");
 		
 		model.setViewName("../../index");
 
@@ -166,6 +163,8 @@ public class StudentController {
 
 		List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
 		model.addObject("allmapinfo", allmapinfo);
+		String address = "culture/";
+		model.addObject("address", "culture/");
 		/*for(Map<String, Object> i:allmapinfo)
 			System.out.println(i);*/
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -188,6 +187,7 @@ public class StudentController {
 	            }
 	        }
 		}
+		
 		model.setViewName("../../index");
 		
 		return model;
@@ -216,7 +216,7 @@ public class StudentController {
 		model.addObject("allmapinfo", allmapinfo);*/
 		/*List alluserinfo = studentService.getactiveinfo();
 		model.addObject("alluserinfo", alluserinfo);*/
-
+		model.addObject("address", "");
 		model.setViewName("../../index");
 		
 		return model;
