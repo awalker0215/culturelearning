@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="/resources/css/user_index.css" rel="stylesheet"
 	type="text/css">
+	<link rel="shortcut icon" href="/resources/pic/icon.ico"/>
 <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
 <script>
 	var __adobewebfontsappname__ = "dreamweaver"
@@ -118,7 +119,7 @@
 									name="classVideo" placeholder="網址" size="40"></td>
 							</tr>
 							<tr>
-								<td colspan="3"><input type="file" class="upl">
+								<td colspan="3"><input type="file" name = "filename" class="upl">
 									<div>
 										<p contenteditable="true" name="content">
 											<input type="text" name="content" value="the point content">
@@ -129,8 +130,9 @@
 							</tr>
 						</table>
 						<td colspan="2"><input id="btn_refirsted" type="submit" name="button"
-							value="新增" class="addData"> <input type="hidden"
-															   name="${_csrf.parameterName}" value="${_csrf.token}" /></td>
+							value="新增" class="addData"> 
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+							<input type="hidden" name="username" value="${username}" /></td>
 					</form>
 				</div>
 			</section>

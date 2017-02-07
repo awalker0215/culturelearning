@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>文化學習 細部說明</title>
 <link href="/resources/css/reception.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="/resources/pic/icon.ico"/>
 </head>
 <body>
 <!-- Main Container -->

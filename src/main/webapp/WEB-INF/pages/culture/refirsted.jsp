@@ -6,6 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>使用者註冊</title>
 <link href="/resources/css/userLogin.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="/resources/pic/icon.ico"/>
 </head>
 <body>
 <div class="container">

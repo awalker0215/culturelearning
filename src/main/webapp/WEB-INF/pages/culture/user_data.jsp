@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="/resources/css/user_index.css" rel="stylesheet"
 	type="text/css">
+	<link rel="shortcut icon" href="/resources/pic/icon.ico"/>
 <script>
 	var __adobewebfontsappname__ = "dreamweaver"
 </script>

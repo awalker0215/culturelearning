@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>文化學習 細部說明</title>
 <link href="/resources/css/reception.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="/resources/pic/icon.ico"/>
 </head>
 <body class="mybody">
 <!-- Main Container -->
@@ -25,7 +26,9 @@
 <div class="my_container"> 
   <!-- Header -->
   <header class="primary_header">
-    <h1 class="title">細部說明</h1>
+  <c:forEach items="${ditailinfo}" var="p">
+    <h1 class="title">${p.l_name} 細部說明</h1>
+    </c:forEach>
   </header>
   <!-- Hero Section -->
   <section class="intro">
