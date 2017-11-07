@@ -72,6 +72,21 @@ public class StudentService {
 		return mapinfo;
 	}
 
+	public List getallcultureinfo() {
+		// TODO Auto-generated method stub
+		List<Map<String, Object>> getallcultureinfo = studentRepository.selectallcultures();
+		return getallcultureinfo;
+	}
 
+	public List getallbuildinfo() {
+		// TODO Auto-generated method stub
+		List<Map<String, Object>> getallbuildinfo = studentRepository.selectallbuilding();
+		return getallbuildinfo;
+	}
+	public List getallanimalsinfo() {
+		// TODO Auto-generated method stub
+		List<Map<String, Object>> getallanimalsinfo = studentRepository.selectallanimals();
+		return getallanimalsinfo;
+	}
 	
 }

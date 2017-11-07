@@ -73,10 +73,13 @@ public class LoginController {
 	            }
 	        }
 		}
+
 		List<Map<String, Object>> allmapinfo= loginService.getallmaprinfo();
 		model.addObject("allmapinfo", allmapinfo);
+
 		model.addObject("address", "culture/");
 		model.setViewName("../../index");
+
 		return model;
 
 	}

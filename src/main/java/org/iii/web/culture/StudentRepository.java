@@ -146,6 +146,27 @@ public class StudentRepository {
 		return list;
 	}
 	
+	public List selectallcultures() {
+		// TODO Auto-generated method stub
+			String sql = "SELECT * FROM culture";
+			List<Map<String, Object>> culture = this.jdbcTemplate.queryForList(sql);
+			
+			return culture;
+	}
 	
+	public List selectallbuilding() {
+		// TODO Auto-generated method stub
+			String sql = "SELECT * FROM building";
+			List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql);
+			
+			return list;
+	}
+	public List selectallanimals() {
+		// TODO Auto-generated method stub
+			String sql = "SELECT * FROM animals";
+			List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql);
+			
+			return list;
+	}
 	
 }

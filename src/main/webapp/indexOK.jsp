@@ -34,15 +34,15 @@
 				document.getElementById("logoutForm").submit();
 			}
 		</script>
-		<a align="right" href="/culture/userdata?username=${username}">【${username}的資料】</a>
+		<a align="right" href="/culture/userdata?username=${username}">【${username}的資料】</a>	
 </sec:authorize>
-	
 </div>
-<div class="container">
+<div class="my_container">
 		<div class="primary_header">
-			<h1 class="title">文化地圖</h1>
+			<h1 class="title">文化座標</h1>
 		</div>	
-		<div height=30px>
+		</div>
+		<div style="height=30px">
 			<form>
 			  <table width="100%" border="0" cellpadding="1">
 				  <tbody>
@@ -98,9 +98,10 @@
 		</div>
 		<div id="map"></div>
 			<div class="copyright">Production team &copy; All Force</div>
-		</div>
+		
 <script type="text/javascript">
 				//地圖
+			var address = "${address}";
 			var map;
 			var sign = [];
 			var index = 0;
@@ -121,7 +122,7 @@
 			    });
 			  markers.push(marker);	
 			  
-			  var html = "<a href="+"/culture/Reception?id="+"${p.l_id}"+">"+"<p>"+"名稱：" + "${p.l_name}"+"</p>"+"</a>";
+			  var html = "<a href="+"${address}"+"Reception?id="+"${p.l_id}"+">"+"<p>"+"名稱：" + "${p.l_name}"+"</p>"+"</a>";
 	          var dital = "${p.l_id}";
 			  //html = html +"<p>地點：" + dataPhoto.position +"</p>";
 	          //html = html +"<p>種類：" + dataPhoto.type +"</p>";

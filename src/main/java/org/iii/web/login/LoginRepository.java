@@ -85,11 +85,31 @@ public class LoginRepository {
 	
 	public List selectallmaps() {
 		// TODO Auto-generated method stub
-
-			String sql = "SELECT * FROM laction";
+			//String sql = "SELECT * FROM laction";
+			String sql = "SELECT * FROM culture";
 			List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql);
 			
 			return list;
 	}
+	
+
+	/*public List selectallanimals() {
+		// TODO Auto-generated method stub
+
+			String sql = "SELECT * FROM laction where l_type = ?";
+			List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql,"¥Íª«");
+			
+			return list;
+	}
+	
+	public List selectallbuild() {
+		// TODO Auto-generated method stub
+
+			String sql = "SELECT * FROM laction where l_type = ?";
+			List<Map<String, Object>> list = this.jdbcTemplate.queryForList(sql,"«Ø¿v");
+			
+			return list;
+	}*/
+	
 	
 }

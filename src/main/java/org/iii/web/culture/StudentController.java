@@ -158,6 +158,14 @@ public class StudentController {
 
 		List<Map<String, Object>> allmapinfo= studentService.getallmaprinfo();
 		model.addObject("allmapinfo", allmapinfo);
+		List<Map<String, Object>> allcultureinfo= studentService.getallcultureinfo();
+		model.addObject("allcultureinfo", allcultureinfo);
+		List<Map<String, Object>> allbuildinfo= studentService.getallbuildinfo();
+		model.addObject("allbuildinfo", allbuildinfo);
+		List<Map<String, Object>> allanimalsinfo= studentService.getallanimalsinfo();
+		model.addObject("allanimalsinfo", allanimalsinfo);
+		
+		
 		String address = "culture/";
 		model.addObject("address", "culture/");
 		/*for(Map<String, Object> i:allmapinfo)

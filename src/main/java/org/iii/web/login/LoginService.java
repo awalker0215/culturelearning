@@ -70,4 +70,16 @@ public class LoginService {
 		return allmapinfo;
 	}
 	
+
+	/*public List getallbuildrinfo() {
+		List<Map<String, Object>> allbuildinfo = loginRepository.selectallbuild();
+		return allbuildinfo;
+	}*/
+
+
+	/*public List getallanimalsrinfo() {
+		List<Map<String, Object>> allanimalsinfo = loginRepository.selectallanimals();
+		return allanimalsinfo;
+	}*/
+	
 }
